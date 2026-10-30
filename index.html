@@ -1,32 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>My Site</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-  <style>
-    body, h1 { font-family: "Raleway", sans-serif }
-    body, html { height: 100% }
-    .bgimg {
-      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80');
-      min-height: 100%;
-      background-position: center;
-      background-size: cover;
-    }
-  </style>
+  <title>quangthong3005-ai's Site</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta name="title" content="quangthong3005-ai's Site">
+  <meta name="description" content="Hi, my name is quangthong3005-ai. I'm the Web Developer.">
+  <meta name="keywords" content="web, fullstack developer">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="author" content="quangthong3005-ai">
+
+  <meta property="og:title" content="quangthong3005-ai's Site" />
+  <meta property="og:url" content="https://quangthong3005-ai.github.io/" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1200" />
+  <meta name="twitter:title" content="quangthong3005-ai's Site">
+  <meta name="twitter:description" content="Hi, my name is quangthong3005-ai. I'm the Web Developer.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1200">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
+
 <body>
-  <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
-    <div class="w3-display-topleft w3-padding-large w3-xlarge">
-      My Logo
+  <!-- banner -->
+  <section class="banner-bg min-h-screen w-full flex flex-col justify-center items-center bg-cover bg-center">
+    <div class="w-full lg:w-[80%] p-12 text-gray-800">
+      <h1 class="text-6xl font-bold mb-10 grid grid-cols-1 lg:gap-5">
+        <span class="banner-text">Hi, my name is <span class="text-teal-400">quangthong3005-ai</span></span>
+        <span class="text-gray-800 banner-text">I'm the Web Developer.</span>
+      </h1>
+      <a href="#about-me" class="banner-cta uppercase border-2 border-teal-400 p-3 hover:bg-teal-400 hover:text-white transition-colors cursor-pointer">
+        <span class="text-xl pl-8 pr-8 pt-3 pb-3 font-light focus:outline-none focus:ring focus:ring-teal-300">Know more</span>
+      </a>
     </div>
-    <div class="w3-display-middle">
-      <h1 class="w3-jumbo w3-animate-top">COMING SOON</h1>
-      <hr class="w3-border-grey" style="margin:auto;width:40%">
-      <p class="w3-large w3-center">10 days left</p>
+  </section>
+  <!-- banner ./ -->
+
+  <!-- about me -->
+  <section id="about-me" class="bg-teal-400 min-h-screen w-full flex flex-col justify-center items-center p-4 lg:p-12 text-white">
+    <div class="w-full lg:w-[60%] mb-5">
+      <h2 class="section-title uppercase text-2xl lg:text-5xl text-center font-bold text-white mb-12">About Me</h2>
+      <div class="section-content grid grid-cols-1 gap-2 lg:grid-cols-3 lg:gap-3">
+        <div class="flex justify-center items-center text-center col-span-1">
+          <div class="w-48 h-48 rounded-full bg-white text-teal-400 flex items-center justify-center text-7xl font-bold" title="My avatar">Q</div>
+        </div>
+        <div class="col-span-1 lg:col-span-2 flex justify-center items-center">
+          <div class="p-0 text-center lg:p-8 lg:text-start">
+            <p class="pb-3 text-lg font-light mb-5">
+              I love programming and building things for the web. I'm learning web development with HTML,
+              Tailwind CSS, Git and GitHub Actions, and my goal is to become a skilled software engineer.
+            </p>
+            <a href="https://github.com/quangthong3005-ai" target="_blank"
+              class="uppercase border-2 border-white p-3 text-white hover:bg-white hover:text-teal-400 transition-colors cursor-pointer">
+              <span class="text-xl pl-8 pr-8 pt-3 pb-3 font-normal focus:outline-none focus:ring focus:ring-teal-300">View My GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+  <!-- about me ./ -->
+
+  <!-- contact -->
+  <section id="contact" class="bg-white min-h-[500px] w-full flex flex-col justify-center items-center p-6 lg:p-12 text-gray-800">
+    <div class="w-full lg:w-[60%] mb-5">
+      <h2 class="section-title uppercase text-2xl lg:text-5xl text-center font-bold mb-6">Contact</h2>
+      <p class="section-content flex flex-col justify-center items-center pt-5 pb-5 text-center">
+        <span class="text-2xl text-teal-500 mb-3">I LOOK FORWARD TO WORKING WITH YOU</span>
+        <span>I'm so happy that my skills might bring values to you. Let's connect for work</span>
+      </p>
+    </div>
+    <a href="mailto:quangthong3005@gmail.com?subject=Hi, I want to connect with you for work&body=Please describe your work or projects requirements"
+      class="border-2 border-teal-400 pl-8 pr-8 pt-3 pb-3 bg-teal-400 text-white hover:bg-white hover:text-teal-400 transition-colors cursor-pointer">
+      <span class="text-xl uppercase font-light focus:outline-none focus:ring focus:ring-teal-300">Send An Email Now</span>
+    </a>
+  </section>
+  <!-- contact ./ -->
+
+  <!-- footer -->
+  <footer class="bg-neutral-900 min-h-[300px] pt-12 pb-12 flex flex-row justify-center items-center">
+    <div class="w-[60%] flex flex-col justify-center items-center">
+      <ul class="flex flex-row text-gray-300 text-lg">
+        <li class="pl-4 pr-4 cursor-pointer hover:-translate-y-2 hover:text-teal-400">
+          <a href="https://github.com/quangthong3005-ai" target="_blank">GitHub</a>
+        </li>
+        <li class="pl-4 pr-4 cursor-pointer hover:-translate-y-2 hover:text-teal-400">
+          <a href="mailto:quangthong3005@gmail.com">Email</a>
+        </li>
+      </ul>
+      <hr class="w-1/2 border-gray-500 mt-10" />
+      <p class="text-lg text-gray-500 mt-5">&copy;2026 - quangthong3005-ai</p>
+    </div>
+  </footer>
+  <!-- footer ./ -->
+
+  <script type="module" src="/src/scripts/application.js"></script>
 </body>
+
 </html>
