@@ -1,0 +1,33 @@
+{
+  "name": "quangthong3005-ai.github.io",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quangthong3005-ai/quangthong3005-ai.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quangthong3005-ai/quangthong3005-ai.github.io/issues"
+  },
+  "homepage": "https://github.com/quangthong3005-ai/quangthong3005-ai.github.io#readme",
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "autoprefixer": "^10.6.2",
+    "postcss": "^8.5.32",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.5"
+  },
+  "dependencies": {
+    "scrollreveal": "^4.0.9"
+  }
+}
