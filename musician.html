@@ -4,399 +4,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0a1c20">
-  <title>Quang Thong | Keyboardist, live shows and collaborations</title>
-  <link rel="icon" type="image/svg+xml" href="/logo-musician.svg">
+  <title>Quang Thong | Keyboardist</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <meta name="title" content="Quang Thong | Keyboardist">
-  <meta name="description" content="Quang Thong, keyboardist with Dynamites Band. See this week's shows and collaborations, watch a live performance and get in touch to book.">
+  <meta name="description" content="Quang Thong, keyboardist. Watch a live performance and get in touch.">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Quang Thong">
 
-  <meta property="og:type" content="profile" />
   <meta property="og:title" content="Quang Thong | Keyboardist" />
-  <meta property="og:description" content="Keyboardist with Dynamites Band. Live schedule, collaborations, video and contact." />
   <meta property="og:url" content="https://quangthong3005-ai.github.io/musician.html" />
-  <meta property="og:image" content="https://quangthong3005-ai.github.io/images/portrait.jpg" />
+  <meta property="og:image" content="https://quangthong3005-ai.github.io/images/stage.jpg" />
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Quang Thong | Keyboardist">
-  <meta name="twitter:image" content="https://quangthong3005-ai.github.io/images/portrait.jpg">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Quang Thong",
-    "jobTitle": "Keyboardist",
-    "url": "https://quangthong3005-ai.github.io/musician.html",
-    "image": "https://quangthong3005-ai.github.io/images/portrait.jpg",
-    "memberOf": { "@type": "MusicGroup", "name": "Dynamites Band" }
-  }
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="/images/portrait.jpg" fetchpriority="high">
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
-  <script>document.documentElement.classList.add('js')</script>
-
-  <style>
-    /* Palette: deep teal slate, turquoise, cool grey and pastel pink. Ombre = teal -> grey -> pink. */
-    :root {
-      --ink: #0a1c20; --ink-2: #10282d; --slate: #223a41;
-      --teal: #14b8a6; --teal-bright: #2dd4bf; --teal-deep: #0f766e; --mint: #b9ece4;
-      --grey: #9fb0b4; --mist: #eef3f3; --paper: #ffffff;
-      --pink: #f5b8cf; --pink-soft: #ffe0ec; --pink-deep: #d6789e;
-      --text: #12282c; --muted: #4f666b; --muted-on-ink: #a9c0c2;
-      --line-ink: rgba(255, 255, 255, .11); --line-paper: rgba(18, 40, 44, .1);
-      --ombre: linear-gradient(115deg, #0f766e 0%, #2dd4bf 34%, #c9dede 64%, #f5b8cf 100%);
-      --display: 'Sora', system-ui, sans-serif; --sans: 'Manrope', system-ui, sans-serif;
-      --r: 20px;
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
-    body { margin: 0; background: var(--ink); color: var(--paper); font-family: var(--sans); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
-    h1, h2, h3 { font-family: var(--display); line-height: 1.1; margin: 0; letter-spacing: -.02em; }
-    p, dl, dd, ul, figure { margin: 0; } ul { padding: 0; list-style: none; }
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; height: auto; }
-    :focus-visible { outline: 2px solid var(--teal-bright); outline-offset: 3px; }
-    .wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
-
-    /* ---------- motion helpers (transform / opacity only, so they stay cheap) ---------- */
-    .js .rv { opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .8s cubic-bezier(.22, .8, .24, 1); }
-    .js .rv.in { opacity: 1; transform: none; }
-    .rv.d1 { transition-delay: .08s; } .rv.d2 { transition-delay: .16s; } .rv.d3 { transition-delay: .24s; }
-    @keyframes up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
-    .hero .up { animation: up .9s cubic-bezier(.22, .8, .24, 1) both; }
-    .hero .up:nth-child(1) { animation-delay: .05s; } .hero .up:nth-child(2) { animation-delay: .14s; }
-    .hero .up:nth-child(3) { animation-delay: .24s; } .hero .up:nth-child(4) { animation-delay: .34s; } .hero .up:nth-child(5) { animation-delay: .44s; }
-
-    /* nav */
-    .nav { position: fixed; inset: 0 0 auto 0; z-index: 50; background: rgba(10, 28, 32, .66); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line-ink); }
-    .nav-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
-    .brand { display: flex; align-items: center; gap: 12px; font-family: var(--display); font-weight: 600; font-size: 17px; }
-    .mark { width: 36px; height: 36px; border-radius: 10px; flex: none; }
-    .links { display: flex; align-items: center; gap: 26px; font-size: 15px; font-weight: 500; color: #cfe0e0; }
-    .links a:hover { color: var(--teal-bright); }
-    .links .hide-sm { display: none; }
-    @media (min-width: 960px) { .links .hide-sm { display: block; } }
-
-    /* buttons */
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 26px; border-radius: 999px; font: 600 15px var(--sans); cursor: pointer; border: 1px solid transparent; transition: transform .2s ease, box-shadow .25s ease, border-color .2s ease, color .2s ease, background-color .2s ease; }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-teal { background: linear-gradient(120deg, #2dd4bf, #5eead4 55%, #f5b8cf); color: var(--ink); box-shadow: 0 12px 30px -10px rgba(45, 212, 191, .55); }
-    .btn-teal:hover { box-shadow: 0 16px 34px -10px rgba(245, 184, 207, .6); }
-    .btn-line { border-color: rgba(255, 255, 255, .3); color: #fff; }
-    .btn-line:hover { border-color: var(--pink); color: var(--pink); }
-    .btn-ink { background: var(--ink); color: #fff; } .btn-ink:hover { background: var(--teal-deep); }
-    .btn-sm { padding: 9px 18px; font-size: 14px; }
-
-    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--teal-bright); }
-    .eyebrow::before { content: ''; width: 26px; height: 2px; background: var(--ombre); border-radius: 2px; }
-    .light .eyebrow { color: var(--teal-deep); }
-    .grad { background: var(--ombre); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .shimmer { background-size: 200% 100%; animation: shimmer 9s ease-in-out infinite alternate; }
-    @keyframes shimmer { to { background-position: 100% 0; } }
-
-    /* ---------- hero with a slow aurora ---------- */
-    .hero { position: relative; overflow: hidden; padding: 132px 0 92px; isolation: isolate; background: linear-gradient(165deg, #091a1d 0%, #0f2a2f 100%); }
-    .aurora { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
-    .aurora i { position: absolute; border-radius: 50%; will-change: transform; animation: drift 24s ease-in-out infinite alternate; }
-    .aurora i:nth-child(1) { width: 62vmax; height: 62vmax; left: -18vmax; top: -22vmax; background: radial-gradient(circle, rgba(45, 212, 191, .34), transparent 62%); }
-    .aurora i:nth-child(2) { width: 54vmax; height: 54vmax; right: -16vmax; top: -8vmax; background: radial-gradient(circle, rgba(245, 184, 207, .26), transparent 62%); animation-duration: 30s; animation-delay: -8s; }
-    .aurora i:nth-child(3) { width: 48vmax; height: 48vmax; left: 22%; bottom: -30vmax; background: radial-gradient(circle, rgba(159, 176, 180, .22), transparent 62%); animation-duration: 36s; animation-delay: -15s; }
-    @keyframes drift { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(5vmax, 3vmax, 0) scale(1.14); } }
-    .paused .aurora i, .paused .eq i, .paused .tick-track { animation-play-state: paused; }
-    .hero::before { content: ''; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(var(--line-ink) 1px, transparent 1px), linear-gradient(90deg, var(--line-ink) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 70% 70% at 70% 40%, #000, transparent 75%); mask-image: radial-gradient(ellipse 70% 70% at 70% 40%, #000, transparent 75%); opacity: .3; pointer-events: none; }
-    .hero-grid { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
-    .hero h1 { font-size: clamp(2.7rem, 6.4vw, 5rem); font-weight: 700; margin: 22px 0 22px; }
-    .hero p.lead { max-width: 520px; font-size: 19px; color: var(--muted-on-ink); }
-    .hero .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
-    .chip { padding: 7px 14px; border: 1px solid var(--line-ink); border-radius: 999px; font-size: 14px; color: #d3e3e3; background: rgba(255, 255, 255, .05); }
-    .chip a { color: var(--pink); }
-    .next-pill { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; padding: 9px 16px; border-radius: 999px; background: rgba(255, 255, 255, .08); border: 1px solid rgba(245, 184, 207, .4); font-size: 14px; max-width: 100%; }
-    .next-pill[hidden] { display: none; }
-    .next-pill span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .live-dot { width: 9px; height: 9px; border-radius: 50%; background: #4ade80; flex: none; box-shadow: 0 0 0 0 rgba(74, 222, 128, .6); animation: pulse 2.2s infinite; }
-    @keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(74, 222, 128, 0); } 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); } }
-    .portrait { position: relative; justify-self: end; width: min(100%, 460px); }
-    .portrait::before { content: ''; position: absolute; inset: -14px; border-radius: 36px; background: linear-gradient(135deg, var(--teal-bright), var(--pink) 80%); opacity: .5; }
-    .portrait img { position: relative; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 28px; border: 1px solid rgba(255, 255, 255, .25); box-shadow: 0 30px 80px rgba(0, 0, 0, .45); }
-    .badge { position: absolute; left: -22px; bottom: 34px; display: flex; align-items: center; gap: 12px; padding: 12px 18px; background: rgba(10, 28, 32, .86); backdrop-filter: blur(10px); border: 1px solid var(--line-ink); border-radius: 16px; font-size: 14px; animation: floaty 7s ease-in-out infinite; }
-    @keyframes floaty { 50% { transform: translateY(-9px); } }
-    .badge b { display: block; font-family: var(--display); font-size: 15px; }
-    .badge span.s { color: var(--muted-on-ink); font-size: 13px; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--teal-bright); box-shadow: 0 0 0 5px rgba(45, 212, 191, .2); flex: none; }
-    @media (max-width: 860px) { .hero { padding: 108px 0 64px; } .hero-grid { grid-template-columns: 1fr; gap: 44px; } .portrait { justify-self: center; width: min(100%, 380px); } .badge { left: 12px; } }
-
-    /* ombre ticker */
-    .ticker { overflow: hidden; background: var(--ombre); color: var(--ink); }
-    .tick-track { display: flex; gap: 2.6rem; width: max-content; padding: 14px 0; font-family: var(--display); font-weight: 600; font-size: 18px; animation: tick 38s linear infinite; }
-    .tick-track span { white-space: nowrap; } .tick-track b { color: rgba(10, 28, 32, .45); font-weight: 400; }
-    @keyframes tick { to { transform: translateX(-50%); } }
-
-    /* sections */
-    section.block { padding: 104px 0; }
-    .below { content-visibility: auto; contain-intrinsic-size: auto 720px; }
-    .light { color: var(--text); }
-    .sec-head { max-width: 680px; margin-bottom: 48px; }
-    .sec-head h2 { font-size: clamp(2rem, 4.6vw, 3.2rem); font-weight: 700; margin-top: 16px; }
-    .sec-head p { margin-top: 16px; color: var(--muted-on-ink); }
-    .light .sec-head p { color: var(--muted); }
-
-    /* ---------- schedule ---------- */
-    .sch-sec { position: relative; isolation: isolate; background: linear-gradient(180deg, #0c2125 0%, #12292f 100%); }
-    .sch-sec::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse 45% 60% at 0% 0%, rgba(45, 212, 191, .16), transparent 62%), radial-gradient(ellipse 45% 60% at 100% 100%, rgba(245, 184, 207, .16), transparent 62%); pointer-events: none; }
-    .sch-top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 36px; }
-    .sch-top h2 { font-size: clamp(2rem, 4.6vw, 3.2rem); font-weight: 700; margin-top: 14px; }
-    .sch-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; color: var(--muted-on-ink); font-size: 15px; }
-    .live-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: #8aa3a6; }
-    .live-tag i { width: 8px; height: 8px; border-radius: 50%; background: #5e7478; flex: none; }
-    .live-tag.on { color: #86efac; } .live-tag.on i { background: #4ade80; animation: pulse 2.2s infinite; }
-    @media (max-width: 700px) { .sch-meta { align-items: flex-start; } }
-    .week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; }
-    .day { background: rgba(255, 255, 255, .055); border: 1px solid var(--line-ink); border-radius: var(--r); padding: 16px 14px 18px; min-height: 196px; display: flex; flex-direction: column; gap: 11px; transition: transform .25s ease, border-color .25s ease; }
-    .day:hover { transform: translateY(-4px); border-color: rgba(245, 184, 207, .5); }
-    .day.today { border-color: rgba(45, 212, 191, .7); background: linear-gradient(160deg, rgba(45, 212, 191, .2), rgba(245, 184, 207, .1) 70%); box-shadow: 0 20px 44px -26px rgba(45, 212, 191, .7); }
-    .dh { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; padding-bottom: 10px; border-bottom: 1px solid var(--line-ink); }
-    .dow { width: 100%; font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--pink); }
-    .dnum { font-family: var(--display); font-size: 32px; font-weight: 600; line-height: 1; }
-    .dmon { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); }
-    .none { margin-top: auto; font-size: 13px; color: #6e868a; }
-    .show { display: flex; flex-direction: column; gap: 3px; padding: 9px 11px; border-radius: 12px; background: rgba(6, 18, 21, .5); border-left: 3px solid var(--teal-bright); }
-    a.show:hover { background: rgba(45, 212, 191, .14); }
-    .show.k-collab { border-left-color: var(--pink); } .show.k-solo { border-left-color: var(--grey); } .show.k-session { border-left-color: var(--mint); }
-    .show.past { opacity: .5; }
-    .st { font-size: 13px; font-weight: 700; color: var(--mint); letter-spacing: .03em; }
-    .show.k-collab .st { color: var(--pink); }
-    .sn { font-size: 15px; font-weight: 600; line-height: 1.25; }
-    .sw, .sx { font-size: 13px; color: var(--muted-on-ink); line-height: 1.35; }
-    .kind { align-self: flex-start; margin-top: 2px; padding: 2px 9px; border-radius: 99px; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: rgba(45, 212, 191, .18); color: var(--mint); }
-    .k-collab .kind { background: rgba(245, 184, 207, .2); color: var(--pink); } .k-solo .kind { background: rgba(159, 176, 180, .2); color: #d5e0e2; } .k-session .kind { background: rgba(185, 236, 228, .16); }
-    @media (max-width: 1023px) { .week { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-    @media (max-width: 640px) {
-      .week { grid-template-columns: 1fr; } .day { min-height: 0; flex-direction: row; flex-wrap: wrap; align-items: center; }
-      .dh { width: 88px; border: 0; padding: 0; flex-direction: column; gap: 0; } .dow { width: auto; } .none { margin: 0; } .show { flex: 1 1 170px; }
-    }
-    .coming { margin-top: 44px; }
-    .coming h3 { font-size: 22px; font-weight: 600; margin-bottom: 16px; }
-    .coming ul { display: grid; gap: 10px; }
-    .cm { display: grid; grid-template-columns: 112px 1fr auto; gap: 6px 18px; align-items: center; padding: 14px 18px; border-radius: 16px; background: rgba(255, 255, 255, .05); border: 1px solid var(--line-ink); transition: border-color .25s ease, transform .25s ease; }
-    .cm:hover { border-color: rgba(45, 212, 191, .55); transform: translateX(4px); }
-    .cm time { font-family: var(--display); font-weight: 600; color: var(--pink); font-size: 15px; }
-    .cm b { display: block; font-weight: 600; } .cm small { color: var(--muted-on-ink); font-size: 14px; }
-    @media (max-width: 640px) { .cm { grid-template-columns: 1fr; } }
-    .sch-cta { margin-top: 30px; color: var(--muted-on-ink); }
-    .sch-cta a { color: var(--teal-bright); border-bottom: 1px solid currentColor; }
-
-    /* about (light, grey to pink ombre) */
-    .about { background: radial-gradient(ellipse 50% 60% at 100% 0%, rgba(245, 184, 207, .35), transparent 62%), radial-gradient(ellipse 45% 55% at 0% 100%, rgba(45, 212, 191, .16), transparent 62%), linear-gradient(165deg, #e8efef 0%, #eef1f3 55%, #f6e9ef 100%); }
-    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 56px; align-items: start; }
-    .about h2 { font-size: clamp(2rem, 4.6vw, 3.2rem); font-weight: 700; margin: 16px 0 26px; }
-    .about .copy p.big { font-size: 19px; color: #26474b; } .about .copy p + p { margin-top: 18px; color: var(--muted); }
-    .facts { background: rgba(255, 255, 255, .62); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, .85); border-radius: 24px; padding: 8px 28px; box-shadow: 0 24px 54px -28px rgba(15, 118, 110, .35); }
-    .fact { display: flex; justify-content: space-between; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--line-paper); }
-    .fact:last-child { border: 0; }
-    .fact dt { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-    .fact dd { font-weight: 600; text-align: right; } .fact dd a { color: var(--teal-deep); border-bottom: 1px solid currentColor; }
-    @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; gap: 36px; } section.block { padding: 76px 0; } }
-
-    /* music */
-    .music { background: radial-gradient(ellipse 45% 55% at 90% 0%, rgba(245, 184, 207, .16), transparent 62%), linear-gradient(180deg, #0f2a2f 0%, #0a1c20 100%); }
-    .eq { display: inline-flex; align-items: flex-end; gap: 3px; height: 18px; margin-right: 4px; }
-    .eq i { width: 4px; height: 100%; border-radius: 2px; background: var(--ombre); transform-origin: bottom; animation: eq 1.1s ease-in-out infinite; }
-    .eq i:nth-child(2) { animation-delay: -.35s; } .eq i:nth-child(3) { animation-delay: -.7s; } .eq i:nth-child(4) { animation-delay: -.2s; }
-    @keyframes eq { 0%, 100% { transform: scaleY(.25); } 50% { transform: scaleY(1); } }
-    .video-frame { position: relative; border-radius: 26px; padding: 10px; background: linear-gradient(135deg, rgba(45, 212, 191, .55), rgba(255, 255, 255, .06) 45%, rgba(245, 184, 207, .45)); box-shadow: 0 30px 90px -20px rgba(45, 212, 191, .28); }
-    .video-frame video { display: block; width: 100%; max-height: 72vh; border-radius: 18px; background: #000; }
-    .video-cap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; margin-top: 22px; color: var(--muted-on-ink); font-size: 15px; }
-    .video-cap b { color: #fff; font-family: var(--display); font-weight: 600; font-size: 17px; }
-
-    /* gallery */
-    .gallery { background: radial-gradient(ellipse 50% 60% at 0% 0%, rgba(45, 212, 191, .16), transparent 62%), linear-gradient(170deg, #f3f6f6 0%, #f6f1f3 60%, #fbe9f1 100%); }
-    .gal { display: grid; grid-template-columns: 1.5fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; height: 560px; }
-    .gal figure { position: relative; overflow: hidden; border-radius: 22px; background: var(--ink); }
-    .gal figure:first-child { grid-row: 1 / span 2; }
-    .gal img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s cubic-bezier(.22, .8, .24, 1); }
-    .gal figure:hover img { transform: scale(1.06); }
-    .gal figcaption { position: absolute; left: 14px; bottom: 14px; padding: 6px 14px; border-radius: 999px; background: rgba(10, 28, 32, .72); backdrop-filter: blur(8px); color: #fff; font-size: 13px; font-weight: 600; }
-    @media (max-width: 760px) { .gal { grid-template-columns: 1fr; grid-template-rows: auto; height: auto; } .gal figure, .gal figure:first-child { grid-row: auto; aspect-ratio: 4 / 3; } }
-
-    /* contact: ombre */
-    .contact { position: relative; overflow: hidden; padding: 104px 0; text-align: center; color: var(--ink); background: radial-gradient(ellipse 60% 70% at 50% 130%, rgba(255, 255, 255, .5), transparent 60%), linear-gradient(120deg, #7ad9cb 0%, #bfe0dd 38%, #d8d9df 64%, #f5c1d5 100%); }
-    .contact h2 { font-size: clamp(2.2rem, 5.4vw, 3.8rem); font-weight: 700; margin: 18px 0; }
-    .contact .eyebrow { color: var(--teal-deep); }
-    .contact p.lead { max-width: 520px; margin: 0 auto; color: #274349; font-size: 19px; }
-    .contact .cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 34px; }
-    .contact .btn-line { border-color: rgba(10, 28, 32, .4); color: var(--ink); } .contact .btn-line:hover { border-color: var(--ink); color: var(--teal-deep); }
-    .addr { margin-top: 24px; font-size: 16px; color: #274349; }
-
-    footer { background: var(--ink); border-top: 1px solid var(--line-ink); padding: 44px 0; color: var(--muted-on-ink); font-size: 15px; }
-    .foot { display: flex; flex-wrap: wrap; gap: 18px 36px; align-items: center; justify-content: space-between; }
-    .foot ul { display: flex; flex-wrap: wrap; gap: 8px 28px; } .foot a:hover { color: var(--teal-bright); }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { animation: none !important; transition: none !important; }
-      .js .rv { opacity: 1; transform: none; }
-    }
-  </style>
+  <meta name="twitter:image" content="https://quangthong3005-ai.github.io/images/stage.jpg">
 </head>
 
-<body>
-  <header class="nav">
-    <nav class="wrap nav-in" aria-label="Main">
-      <a href="index.html" class="brand"><img class="mark" src="/logo-musician.svg" width="36" height="36" alt="">Quang Thong</a>
-      <div class="links">
-        <a class="hide-sm" href="#schedule">Schedule</a>
-        <a class="hide-sm" href="#about">About</a>
-        <a class="hide-sm" href="#music">Music</a>
-        <a class="hide-sm" href="#gallery">Gallery</a>
-        <a class="hide-sm" href="audio-plugin.html">Audio Plugins</a>
-        <a class="hide-sm" href="developer.html">Developer</a>
-        <a class="btn btn-teal btn-sm" href="#contact">Get in touch</a>
-      </div>
+<body class="bg-neutral-900 text-neutral-100">
+  <!-- nav -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-neutral-900/85 backdrop-blur shadow-sm">
+    <nav class="w-full lg:w-[80%] mx-auto flex flex-row justify-between items-center px-4 py-3">
+      <a href="index.html" class="font-bold text-lg text-amber-300">Quang Thong</a>
+      <ul class="flex flex-row items-center gap-3 lg:gap-6 text-sm lg:text-base text-neutral-300">
+        <li class="hidden md:block"><a class="hover:text-amber-300" href="#about">About</a></li>
+        <li class="hidden md:block"><a class="hover:text-amber-300" href="#music">Music</a></li>
+        <li class="hidden md:block"><a class="hover:text-amber-300" href="#gallery">Gallery</a></li>
+        <li class="hidden md:block"><a class="hover:text-amber-300" href="#contact">Contact</a></li>
+        <li class="hidden md:block"><a class="hover:text-amber-300" href="audio-plugin.html">Audio Plugins</a></li>
+        <li><a class="border-2 border-amber-300 px-3 py-1 text-amber-300 hover:bg-amber-300 hover:text-neutral-900 transition-colors" href="developer.html">Developer &rarr;</a></li>
+      </ul>
     </nav>
   </header>
+  <!-- nav ./ -->
 
-  <main>
-    <!-- hero -->
-    <section class="hero" aria-label="Introduction">
-      <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
-      <div class="wrap hero-grid">
-        <div>
-          <p class="eyebrow up">Keyboardist</p>
-          <h1 class="up">Hi, I'm <span class="grad shimmer">Quang Thong.</span><br>I play keys.</h1>
-          <p class="lead up">I'm a keyboardist who loves playing live and making music together with other people.</p>
-          <div class="cta up">
-            <a class="btn btn-teal" href="#schedule">See my schedule</a>
-            <a class="btn btn-line" href="#contact">Book me</a>
-          </div>
-          <div class="up">
-            <a id="nextShow" class="next-pill" href="#schedule" hidden></a>
-            <div class="chips">
-              <span class="chip">Member of <a href="https://quangthong3005-ai.github.io/Dynamite-band/" target="_blank" rel="noopener">Dynamites Band &rarr;</a></span>
-              <span class="chip">Live shows</span>
-              <span class="chip">Collaborations</span>
-            </div>
-          </div>
-        </div>
-        <div class="portrait up">
-          <img src="/images/portrait.jpg" width="960" height="960" alt="Quang Thong, keyboardist, leaning on a keyboard" fetchpriority="high" decoding="async" />
-          <div class="badge"><span class="dot" aria-hidden="true"></span><div><b>Quang Thong</b><span class="s">Keyboardist &middot; Dynamites Band</span></div></div>
-        </div>
-      </div>
-    </section>
+  <!-- hero -->
+  <section class="min-h-screen w-full flex flex-col justify-center items-center bg-cover bg-center"
+    style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)), url('/images/stage.jpg');">
+    <div class="w-full lg:w-[80%] p-12">
+      <h1 class="text-5xl lg:text-6xl font-bold mb-10 grid grid-cols-1 lg:gap-5">
+        <span class="banner-text">Hi, I'm <span class="text-amber-300">Quang Thong</span></span>
+        <span class="banner-text">I'm a Keyboardist.</span>
+      </h1>
+      <a href="#music" class="banner-cta uppercase border-2 border-amber-300 p-3 text-amber-300 hover:bg-amber-300 hover:text-neutral-900 transition-colors cursor-pointer">
+        <span class="text-xl pl-8 pr-8 pt-3 pb-3 font-light">Watch &amp; listen</span>
+      </a>
+    </div>
+  </section>
+  <!-- hero ./ -->
 
-    <div class="ticker" aria-hidden="true">
-      <div class="tick-track">
-        <span>Live shows</span><b>&#9679;</b><span>Collaborations</span><b>&#9679;</b><span>Dynamites Band</span><b>&#9679;</b><span>Studio sessions</span><b>&#9679;</b><span>Keys &amp; sound</span><b>&#9679;</b>
-        <span>Live shows</span><b>&#9679;</b><span>Collaborations</span><b>&#9679;</b><span>Dynamites Band</span><b>&#9679;</b><span>Studio sessions</span><b>&#9679;</b><span>Keys &amp; sound</span><b>&#9679;</b>
+  <!-- about -->
+  <section id="about" class="bg-neutral-800 min-h-[70vh] w-full flex flex-col justify-center items-center p-6 lg:p-12">
+    <div class="w-full lg:w-[60%]">
+      <h2 class="section-title uppercase text-2xl lg:text-5xl text-center font-bold text-amber-300 mb-12">About</h2>
+      <div class="section-content grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+        <div class="flex justify-center col-span-1">
+          <img class="w-64 h-64 object-cover rounded-full border-4 border-amber-300" src="/images/portrait.jpg" alt="Quang Thong, keyboardist" />
+        </div>
+        <div class="col-span-1 lg:col-span-2 text-center lg:text-start">
+          <p class="text-lg font-light text-neutral-300 mb-4">
+            I'm Quang Thong, a keyboardist. I love playing live and making music together with other people.
+          </p>
+          <p class="text-neutral-400">
+            This section is a short starting text. Tell me your story, genres and influences and I will rewrite it for you.
+          </p>
+        </div>
       </div>
     </div>
+  </section>
+  <!-- about ./ -->
 
-    <!-- schedule -->
-    <section id="schedule" class="block sch-sec" aria-label="Schedule">
-      <div class="wrap">
-        <div class="sch-top rv">
-          <div>
-            <p class="eyebrow">Schedule</p>
-            <h2>On the calendar <span class="grad">this week</span></h2>
-          </div>
-          <div class="sch-meta"><span id="qtLive" class="live-tag"><i></i>Live schedule</span><span id="qtRange"></span></div>
-        </div>
-        <div id="qtWeek" class="week" aria-live="polite"></div>
-        <div class="coming" id="qtComingBox" hidden>
-          <h3>Coming up</h3>
-          <ul id="qtComing"></ul>
-        </div>
-        <p class="sch-cta">Want me at your show or session? <a href="#contact">Get in touch</a></p>
+  <!-- music -->
+  <section id="music" class="bg-neutral-900 min-h-[70vh] w-full flex flex-col justify-center items-center p-6 lg:p-12">
+    <div class="w-full lg:w-[60%]">
+      <h2 class="section-title uppercase text-2xl lg:text-5xl text-center font-bold text-amber-300 mb-4">Music</h2>
+      <p class="section-content text-center text-neutral-400 mb-8">Live performance</p>
+      <video class="section-content w-full max-h-[70vh] bg-black border-2 border-neutral-700" controls preload="none"
+        playsinline poster="/videos/performance-poster.jpg">
+        <source src="/videos/performance.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+  <!-- music ./ -->
+
+  <!-- gallery -->
+  <section id="gallery" class="bg-neutral-800 min-h-[60vh] w-full flex flex-col justify-center items-center p-6 lg:p-12">
+    <div class="w-full lg:w-[70%]">
+      <h2 class="section-title uppercase text-2xl lg:text-5xl text-center font-bold text-amber-300 mb-12">Gallery</h2>
+      <div class="section-content grid grid-cols-1 md:grid-cols-3 gap-4">
+        <img class="w-full h-72 object-cover hover:-translate-y-2 transition-transform" src="/images/stage.jpg" alt="Performing on stage in front of a crowd" />
+        <img class="w-full h-72 object-cover hover:-translate-y-2 transition-transform" src="/images/portrait.jpg" alt="Portrait with keyboard" />
+        <img class="w-full h-72 object-cover hover:-translate-y-2 transition-transform" src="/images/illustration.jpg" alt="Illustration of a keyboardist playing" />
       </div>
-    </section>
+    </div>
+  </section>
+  <!-- gallery ./ -->
 
-    <!-- about -->
-    <section id="about" class="block light about below">
-      <div class="wrap about-grid">
-        <div class="copy">
-          <p class="eyebrow rv">About</p>
-          <h2 class="rv d1">Music is better <span class="grad">played together.</span></h2>
-          <!-- TODO: replace with your real story, genres and influences -->
-          <p class="big rv d2">I'm Quang Thong, a keyboardist with Dynamites Band. I love playing live and I take care of the details that make a song feel right on stage.</p>
-          <p class="rv d2">I also play with other bands and artists. Tell me about your show, recording or project and we can find the sound that fits it.</p>
-        </div>
-        <dl class="facts rv d2">
-          <div class="fact"><dt>Instrument</dt><dd>Keyboards</dd></div>
-          <div class="fact"><dt>Band</dt><dd><a href="https://quangthong3005-ai.github.io/Dynamite-band/" target="_blank" rel="noopener">Dynamites Band</a></dd></div>
-          <div class="fact"><dt>Available for</dt><dd>Live shows, collaborations</dd></div>
-          <div class="fact"><dt>Contact</dt><dd><a href="#contact">Send a message</a></dd></div>
-        </dl>
-      </div>
-    </section>
+  <!-- contact -->
+  <section id="contact" class="bg-amber-300 min-h-[400px] w-full flex flex-col justify-center items-center p-6 lg:p-12 text-neutral-900">
+    <div class="w-full lg:w-[60%] mb-5 text-center">
+      <h2 class="section-title uppercase text-2xl lg:text-5xl font-bold mb-6">Contact</h2>
+      <p class="section-content pb-5">For bookings, collaborations and questions, get in touch.</p>
+    </div>
+    <a href="mailto:quangthong3005@gmail.com?subject=Hi Quang Thong, I want to connect about music"
+      class="border-2 border-neutral-900 pl-8 pr-8 pt-3 pb-3 bg-neutral-900 text-amber-300 hover:bg-amber-300 hover:text-neutral-900 transition-colors cursor-pointer">
+      <span class="text-xl uppercase font-light">Send An Email Now</span>
+    </a>
+  </section>
+  <!-- contact ./ -->
 
-    <!-- music -->
-    <section id="music" class="block music below">
-      <div class="wrap">
-        <div class="sec-head rv">
-          <p class="eyebrow">Music</p>
-          <h2><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span> Live performance</h2>
-          <p>Press play to watch a performance.</p>
-        </div>
-        <div class="video-frame rv d1">
-          <video controls preload="none" playsinline poster="/videos/performance-poster.jpg">
-            <source src="/videos/performance.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="video-cap rv d2"><b>Performance</b><span>Quang Thong &middot; Dynamites Band</span></div>
-      </div>
-    </section>
-
-    <!-- gallery -->
-    <section id="gallery" class="block light gallery below">
-      <div class="wrap">
-        <div class="sec-head rv">
-          <p class="eyebrow">Gallery</p>
-          <h2>On stage <span class="grad">&amp; off</span></h2>
-        </div>
-        <div class="gal rv d1">
-          <figure><img src="/images/stage.jpg" width="2048" height="1365" alt="Performer on stage facing a crowd lit by phone lights" loading="lazy" decoding="async" /><figcaption>Live on stage</figcaption></figure>
-          <figure><img src="/images/portrait.jpg" width="960" height="960" alt="Portrait with keyboard" loading="lazy" decoding="async" /><figcaption>Portrait</figcaption></figure>
-          <figure><img src="/images/illustration.jpg" width="855" height="866" alt="Illustration of a keyboardist playing" loading="lazy" decoding="async" /><figcaption>Illustration</figcaption></figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- contact -->
-    <section id="contact" class="contact below">
-      <div class="wrap">
-        <p class="eyebrow rv">Contact</p>
-        <h2 class="rv d1">Let's make music.</h2>
-        <p class="lead rv d2">For bookings, collaborations and questions, send me a message.</p>
-        <div class="cta rv d2">
-          <a class="btn btn-ink" href="mailto:quangthong3005@gmail.com?subject=Hi Quang Thong, I want to connect about music">Send an email</a>
-          <a class="btn btn-line" href="https://mail.google.com/mail/?view=cm&fs=1&to=quangthong3005@gmail.com&su=Hi%20Quang%20Thong%2C%20I%20want%20to%20connect%20about%20music" target="_blank" rel="noopener">Open in Gmail</a>
-        </div>
-        <p class="addr rv d3">or write to <strong>quangthong3005@gmail.com</strong></p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap foot">
-      <a href="index.html" class="brand"><img class="mark" src="/logo-musician.svg" width="36" height="36" alt="">Quang Thong</a>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="audio-plugin.html">Audio Plugins</a></li>
-        <li><a href="developer.html">Developer</a></li>
-        <li><a href="mailto:quangthong3005@gmail.com">Email</a></li>
+  <!-- footer -->
+  <footer class="bg-black min-h-[250px] pt-12 pb-12 flex flex-row justify-center items-center">
+    <div class="w-[60%] flex flex-col justify-center items-center">
+      <ul class="flex flex-row text-neutral-300 text-lg">
+        <li class="pl-4 pr-4 cursor-pointer hover:-translate-y-2 hover:text-amber-300"><a href="index.html">Home</a></li>
+        <li class="pl-4 pr-4 cursor-pointer hover:-translate-y-2 hover:text-amber-300"><a href="developer.html">Developer</a></li>
+        <li class="pl-4 pr-4 cursor-pointer hover:-translate-y-2 hover:text-amber-300"><a href="mailto:quangthong3005@gmail.com">Email</a></li>
       </ul>
-      <p>&copy;2026 Quang Thong</p>
+      <hr class="w-1/2 border-neutral-600 mt-10" />
+      <p class="text-lg text-neutral-500 mt-5">&copy;2026 - Quang Thong</p>
     </div>
   </footer>
+  <!-- footer ./ -->
 
-  <script type="module" src="./src/scripts/musician.js"></script>
+  <script type="module" src="/src/scripts/application.js"></script>
 </body>
 
 </html>
