@@ -8,6 +8,7 @@ export default defineConfig({
       input: {
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
         developer: fileURLToPath(new URL('./developer.html', import.meta.url)),
+        audioPlugin: fileURLToPath(new URL('./audio-plugin.html', import.meta.url)),
         musician: fileURLToPath(new URL('./musician.html', import.meta.url)),
       },
     },
