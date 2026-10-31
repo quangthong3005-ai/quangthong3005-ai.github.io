@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0b">
+  <title>Quang Thong | Keyboardist</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta name="title" content="Quang Thong | Keyboardist">
+  <meta name="description" content="Quang Thong, keyboardist. Watch a live performance, see photos and get in touch for bookings and collaborations.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Quang Thong">
+
+  <meta property="og:title" content="Quang Thong | Keyboardist" />
+  <meta property="og:url" content="https://quangthong3005-ai.github.io/musician.html" />
+  <meta property="og:image" content="https://quangthong3005-ai.github.io/images/stage.jpg" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Quang Thong | Keyboardist">
+  <meta name="twitter:image" content="https://quangthong3005-ai.github.io/images/stage.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root { --accent: #fcd34d; --bg: #0a0a0b; --surface: #131316; --line: rgba(255, 255, 255, 0.09); }
+    html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: #e7e5e4; -webkit-font-smoothing: antialiased; }
+    .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+    /* fade-in on scroll */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s ease, transform .9s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal.d1 { transition-delay: .12s; }
+    .reveal.d2 { transition-delay: .24s; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .marquee-track { animation: none !important; }
+    }
+
+    .eyebrow { font-size: .75rem; letter-spacing: .32em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+    .section-heading { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; line-height: 1.05; }
+
+    /* buttons */
+    .btn { display: inline-flex; align-items: center; gap: .6rem; padding: .95rem 1.8rem; font-size: .8rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; transition: all .25s ease; cursor: pointer; }
+    .btn-solid { background: var(--accent); color: #0a0a0b; border: 1px solid var(--accent); }
+    .btn-solid:hover { background: transparent; color: var(--accent); }
+    .btn-ghost { border: 1px solid rgba(255, 255, 255, .35); color: #fff; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    /* hero */
+    .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; }
+    .hero-bg { position: absolute; inset: 0; z-index: -2; background: url('/images/stage.jpg') center 65% / cover no-repeat; transform: scale(1.04); animation: heroZoom 18s ease-out forwards; }
+    .hero::after { content: ''; position: absolute; inset: 0; z-index: -1;
+      background: radial-gradient(ellipse at 50% 70%, transparent 25%, rgba(10, 10, 11, .55) 100%),
+                  linear-gradient(180deg, rgba(10, 10, 11, .55) 0%, rgba(10, 10, 11, .15) 40%, rgba(10, 10, 11, .9) 100%); }
+    @keyframes heroZoom { to { transform: scale(1); } }
+    @media (prefers-reduced-motion: reduce) { .hero-bg { animation: none; transform: none; } }
+    .scroll-hint { width: 1px; height: 54px; background: linear-gradient(var(--accent), transparent); animation: scrollHint 2s ease-in-out infinite; transform-origin: top; }
+    @keyframes scrollHint { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+
+    /* marquee */
+    .marquee { overflow: hidden; border-block: 1px solid var(--line); background: #0d0d0f; }
+    .marquee-track { display: flex; gap: 3rem; width: max-content; animation: marquee 32s linear infinite; padding: 1.1rem 0; }
+    .marquee-track span { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; font-style: italic; color: #a8a29e; white-space: nowrap; }
+    .marquee-track span.dot { color: var(--accent); font-style: normal; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* about portrait */
+    .portrait-frame { position: relative; }
+    .portrait-frame::before { content: ''; position: absolute; inset: 0; transform: translate(18px, 18px); border: 1px solid var(--accent); z-index: 0; }
+    .portrait-frame img { position: relative; z-index: 1; }
+
+    .card { background: var(--surface); border: 1px solid var(--line); transition: border-color .3s ease, transform .3s ease; }
+    .card:hover { border-color: rgba(252, 211, 77, .5); transform: translateY(-4px); }
+
+    /* video */
+    .video-wrap { position: relative; background: #000; box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .8); }
+    .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, .35); transition: opacity .3s ease; cursor: pointer; border: 0; width: 100%; }
+    .play-overlay.hidden-ov { opacity: 0; pointer-events: none; }
+    .play-circle { width: 92px; height: 92px; border-radius: 9999px; border: 1px solid var(--accent); background: rgba(10, 10, 11, .55); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; transition: transform .3s ease, background .3s ease; }
+    .play-overlay:hover .play-circle { transform: scale(1.08); background: var(--accent); }
+    .play-overlay:hover .play-circle svg { color: #0a0a0b; }
+
+    /* gallery */
+    .g-item { position: relative; overflow: hidden; cursor: zoom-in; background: var(--surface); border: 0; padding: 0; display: block; width: 100%; height: 100%; }
+    .g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s ease, filter .5s ease; }
+    .g-item:hover img { transform: scale(1.06); }
+    .g-item::after { content: attr(data-caption); position: absolute; left: 0; right: 0; bottom: 0; padding: 2.5rem 1.2rem 1rem; font-size: .8rem; letter-spacing: .08em; color: #fff; text-align: left; background: linear-gradient(transparent, rgba(0, 0, 0, .75)); opacity: 0; transform: translateY(8px); transition: all .35s ease; }
+    .g-item:hover::after, .g-item:focus-visible::after { opacity: 1; transform: none; }
+
+    /* lightbox */
+    #lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(0, 0, 0, .93); display: none; align-items: center; justify-content: center; padding: 1.5rem; }
+    #lightbox.open { display: flex; }
+    #lightbox img { max-width: min(92vw, 1200px); max-height: 82vh; object-fit: contain; }
+    .lb-btn { position: absolute; color: #fff; background: rgba(255, 255, 255, .08); border: 1px solid var(--line); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 9999px; cursor: pointer; transition: background .2s ease; }
+    .lb-btn:hover { background: var(--accent); color: #0a0a0b; }
+
+    /* nav */
+    .nav-link { position: relative; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: #d6d3d1; transition: color .2s ease; }
+    .nav-link::after { content: ''; position: absolute; left: 0; bottom: -6px; height: 1px; width: 0; background: var(--accent); transition: width .3s ease; }
+    .nav-link:hover { color: var(--accent); }
+    .nav-link:hover::after { width: 100%; }
+    #site-header { transition: background .3s ease, border-color .3s ease; border-bottom: 1px solid transparent; }
+    #site-header.scrolled { background: rgba(10, 10, 11, .82); backdrop-filter: blur(12px); border-color: var(--line); }
+
+    .contact-glow { background: radial-gradient(ellipse at 50% 120%, rgba(252, 211, 77, .16), transparent 60%), #0a0a0b; }
+  </style>
+  <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
+</head>
+
+<body>
+  <!-- nav -->
+  <header id="site-header" class="fixed top-0 left-0 w-full z-50">
+    <nav class="w-full max-w-6xl mx-auto flex flex-row justify-between items-center px-5 py-4" aria-label="Main">
+      <a href="index.html" class="font-display text-2xl font-semibold tracking-wide text-white">Quang Thong<span class="text-amber-300">.</span></a>
+      <ul class="hidden md:flex flex-row items-center gap-8">
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#performance">Performance</a></li>
+        <li><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li><a class="nav-link" href="#booking">Booking</a></li>
+        <li><a class="nav-link" href="audio-plugin.html">Audio Plugins</a></li>
+        <li><a class="btn btn-ghost !py-2 !px-4 !text-[.7rem]" href="developer.html">Developer &rarr;</a></li>
+      </ul>
+      <button id="menuBtn" class="md:hidden text-white p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="hidden md:hidden bg-[#0a0a0b]/95 backdrop-blur border-t border-white/10 px-5 py-6">
+      <ul class="flex flex-col gap-5">
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#performance">Performance</a></li>
+        <li><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li><a class="nav-link" href="#booking">Booking</a></li>
+        <li><a class="nav-link" href="audio-plugin.html">Audio Plugins</a></li>
+        <li><a class="nav-link" href="developer.html">Developer &rarr;</a></li>
+      </ul>
+    </div>
+  </header>
+  <!-- nav ./ -->
+
+  <main>
+    <!-- hero -->
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-bg" role="img" aria-label="Black and white photo of Quang Thong on stage facing a crowd holding up phone lights"></div>
+      <div class="w-full max-w-6xl mx-auto px-5 pb-20 pt-40">
+        <p class="eyebrow mb-6 reveal">Keyboardist &middot; Live performer</p>
+        <h1 class="font-display font-medium text-white leading-[.92] text-[clamp(3.6rem,13vw,10.5rem)] reveal d1">
+          Quang<br class="md:hidden"> <span class="italic text-amber-300">Thong</span>
+        </h1>
+        <p class="mt-8 max-w-xl text-lg md:text-xl font-light text-stone-300 leading-relaxed reveal d2">
+          Playing keys on stage and in the studio. Turning a room full of people into one shared moment.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4 reveal d2">
+          <a href="#performance" class="btn btn-solid">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12-7.5a1 1 0 0 0 0-1.72l-12-7.5A1 1 0 0 0 7 4.5z" /></svg>
+            Watch performance
+          </a>
+          <a href="#booking" class="btn btn-ghost">Book me</a>
+        </div>
+      </div>
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:block" aria-hidden="true"><div class="scroll-hint"></div></div>
+    </section>
+    <!-- hero ./ -->
+
+    <!-- marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Keys</span><span class="dot">&#9679;</span><span>Live performance</span><span class="dot">&#9679;</span><span>Collaboration</span><span class="dot">&#9679;</span><span>Studio sessions</span><span class="dot">&#9679;</span><span>Booking open</span><span class="dot">&#9679;</span>
+        <span>Keys</span><span class="dot">&#9679;</span><span>Live performance</span><span class="dot">&#9679;</span><span>Collaboration</span><span class="dot">&#9679;</span><span>Studio sessions</span><span class="dot">&#9679;</span><span>Booking open</span><span class="dot">&#9679;</span>
+      </div>
+    </div>
+    <!-- marquee ./ -->
+
+    <!-- about -->
+    <section id="about" class="py-24 lg:py-36 px-5">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 items-center">
+        <div class="lg:col-span-5 reveal">
+          <div class="portrait-frame max-w-sm mx-auto lg:max-w-none">
+            <img class="w-full aspect-square object-cover" src="/images/portrait.jpg" alt="Portrait of Quang Thong leaning on a keyboard" loading="lazy" />
+          </div>
+        </div>
+        <div class="lg:col-span-7 reveal d1">
+          <p class="eyebrow mb-4">About</p>
+          <h2 class="section-heading text-5xl lg:text-7xl text-white mb-8">Music is better <span class="italic text-amber-300">shared.</span></h2>
+          <p class="text-lg lg:text-xl font-light text-stone-300 leading-relaxed mb-5">
+            I'm Quang Thong, a keyboardist. I love playing live, feeling the room respond, and making music together with other people.
+          </p>
+          <p class="text-stone-400 leading-relaxed mb-10">
+            Whether it is a stage, a studio session or a new idea with a friend, I bring warmth, feeling and a lot of listening to every note.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="card p-5">
+              <p class="font-display text-2xl text-amber-300 mb-1">Live</p>
+              <p class="text-sm text-stone-400">Concerts, events and stage shows.</p>
+            </div>
+            <div class="card p-5">
+              <p class="font-display text-2xl text-amber-300 mb-1">Studio</p>
+              <p class="text-sm text-stone-400">Keys and arrangements for your tracks.</p>
+            </div>
+            <div class="card p-5">
+              <p class="font-display text-2xl text-amber-300 mb-1">Collab</p>
+              <p class="text-sm text-stone-400">New projects with other artists.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- about ./ -->
+
+    <!-- performance -->
+    <section id="performance" class="py-24 lg:py-32 px-5 bg-[#0d0d0f] border-y border-white/5">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-14 reveal">
+          <p class="eyebrow mb-4">Performance</p>
+          <h2 class="section-heading text-5xl lg:text-7xl text-white">See it <span class="italic text-amber-300">live</span></h2>
+        </div>
+        <div class="video-wrap reveal d1">
+          <video id="perfVideo" class="w-full aspect-video bg-black" controls preload="none" playsinline poster="/videos/performance-poster.jpg">
+            <source src="/videos/performance.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <button id="playOverlay" class="play-overlay" aria-label="Play performance video">
+            <span class="play-circle">
+              <svg class="text-amber-300 transition-colors" width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.2v13.6a1 1 0 0 0 1.5.86l11-6.8a1 1 0 0 0 0-1.72l-11-6.8A1 1 0 0 0 8 5.2z" /></svg>
+            </span>
+          </button>
+        </div>
+        <p class="text-center text-sm text-stone-500 mt-6 tracking-wide">Live performance</p>
+      </div>
+    </section>
+    <!-- performance ./ -->
+
+    <!-- gallery -->
+    <section id="gallery" class="py-24 lg:py-36 px-5">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-14 reveal">
+          <div>
+            <p class="eyebrow mb-4">Gallery</p>
+            <h2 class="section-heading text-5xl lg:text-7xl text-white">Moments on <span class="italic text-amber-300">&amp; off stage</span></h2>
+          </div>
+          <p class="text-stone-500 text-sm">Tap a photo to view it larger.</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 auto-rows-[180px] md:auto-rows-[260px] gap-3 md:gap-4">
+          <div class="col-span-2 row-span-2 reveal">
+            <button class="g-item" data-caption="On stage, facing the crowd" data-full="/images/stage.jpg" data-alt="Black and white photo of Quang Thong on stage facing a crowd holding up phone lights">
+              <img src="/images/stage.jpg" alt="Black and white photo of Quang Thong on stage facing a crowd holding up phone lights" loading="lazy" />
+            </button>
+          </div>
+          <div class="row-span-2 reveal d1">
+            <button class="g-item" data-caption="Portrait with keyboard" data-full="/images/portrait.jpg" data-alt="Portrait of Quang Thong leaning on a keyboard">
+              <img src="/images/portrait.jpg" alt="Portrait of Quang Thong leaning on a keyboard" loading="lazy" />
+            </button>
+          </div>
+          <div class="col-span-2 md:col-span-3 row-span-2 md:row-span-1 reveal d1">
+            <button class="g-item" data-caption="Illustration of a keyboardist playing" data-full="/images/illustration.jpg" data-alt="Illustration of a keyboardist playing under blue light">
+              <img src="/images/illustration.jpg" alt="Illustration of a keyboardist playing under blue light" loading="lazy" style="object-position: center 30%;" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- gallery ./ -->
+
+    <!-- also builds plugins -->
+    <section class="px-5 pb-24 lg:pb-32">
+      <a href="audio-plugin.html" class="card max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6 p-8 lg:p-12 reveal">
+        <div>
+          <p class="eyebrow mb-3">Beyond the keys</p>
+          <p class="font-display text-3xl lg:text-4xl text-white">I also build <span class="italic text-amber-300">audio plugins</span> for the DAW.</p>
+        </div>
+        <span class="btn btn-ghost self-start md:self-auto">Explore plugins &rarr;</span>
+      </a>
+    </section>
+    <!-- also builds plugins ./ -->
+
+    <!-- booking -->
+    <section id="booking" class="contact-glow py-28 lg:py-40 px-5 border-t border-white/5">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="eyebrow mb-5 reveal">Booking &amp; contact</p>
+        <h2 class="section-heading text-5xl lg:text-8xl text-white mb-8 reveal d1">Let's make <span class="italic text-amber-300">music</span> together.</h2>
+        <p class="text-lg text-stone-400 font-light mb-12 reveal d2">
+          Looking for a keyboardist for a show, a recording or a new collaboration? Send me a message with the date, place and a few words about the project.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal d2">
+          <a class="btn btn-solid" href="mailto:quangthong3005@gmail.com?subject=Booking%20enquiry%20for%20Quang%20Thong">Send an email</a>
+          <button id="copyEmail" class="btn btn-ghost" type="button" data-email="quangthong3005@gmail.com">Copy email address</button>
+        </div>
+        <p id="copyMsg" class="h-6 mt-4 text-sm text-amber-300" aria-live="polite"></p>
+      </div>
+    </section>
+    <!-- booking ./ -->
+  </main>
+
+  <!-- footer -->
+  <footer class="bg-black border-t border-white/10 py-12 px-5">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <a href="index.html" class="font-display text-2xl text-white">Quang Thong<span class="text-amber-300">.</span></a>
+      <ul class="flex flex-wrap justify-center gap-x-8 gap-y-3">
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="audio-plugin.html">Audio Plugins</a></li>
+        <li><a class="nav-link" href="developer.html">Developer</a></li>
+        <li><a class="nav-link" href="mailto:quangthong3005@gmail.com">Email</a></li>
+      </ul>
+      <p class="text-sm text-stone-600">&copy;2026 Quang Thong</p>
+    </div>
+  </footer>
+  <!-- footer ./ -->
+
+  <!-- lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="lb-btn" style="top: 1.25rem; right: 1.25rem;" id="lbClose" aria-label="Close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+    </button>
+    <button class="lb-btn" style="left: 1.25rem; top: 50%; transform: translateY(-50%);" id="lbPrev" aria-label="Previous photo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7" /></svg>
+    </button>
+    <button class="lb-btn" style="right: 1.25rem; top: 50%; transform: translateY(-50%);" id="lbNext" aria-label="Next photo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7" /></svg>
+    </button>
+    <img id="lbImg" src="" alt="" />
+  </div>
+  <!-- lightbox ./ -->
+
+  <script type="module" src="/src/scripts/application.js"></script>
+  <script>
+    (function () {
+      // header background after scrolling
+      var header = document.getElementById('site-header');
+      function onScroll() { header.classList.toggle('scrolled', window.scrollY > 40); }
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // mobile menu
+      var menuBtn = document.getElementById('menuBtn');
+      var menu = document.getElementById('mobileMenu');
+      menuBtn.addEventListener('click', function () {
+        var open = menu.classList.toggle('hidden') === false;
+        menuBtn.setAttribute('aria-expanded', String(open));
+        header.classList.toggle('scrolled', open || window.scrollY > 40);
+      });
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded', 'false'); });
+      });
+
+      // fade-in on scroll
+      var items = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        items.forEach(function (el) { io.observe(el); });
+      } else {
+        items.forEach(function (el) { el.classList.add('in'); });
+      }
+
+      // video play overlay
+      var video = document.getElementById('perfVideo');
+      var overlay = document.getElementById('playOverlay');
+      overlay.addEventListener('click', function () { video.play(); });
+      video.addEventListener('play', function () { overlay.classList.add('hidden-ov'); });
+      video.addEventListener('ended', function () { overlay.classList.remove('hidden-ov'); });
+
+      // lightbox
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lbImg');
+      var thumbs = Array.prototype.slice.call(document.querySelectorAll('.g-item'));
+      var current = 0;
+      var lastFocus = null;
+      function show(i) {
+        current = (i + thumbs.length) % thumbs.length;
+        lbImg.src = thumbs[current].getAttribute('data-full');
+        lbImg.alt = thumbs[current].getAttribute('data-alt') || '';
+      }
+      function openLb(i) { lastFocus = document.activeElement; show(i); lb.classList.add('open'); document.body.style.overflow = 'hidden'; document.getElementById('lbClose').focus(); }
+      function closeLb() { lb.classList.remove('open'); document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
+      thumbs.forEach(function (t, i) { t.addEventListener('click', function () { openLb(i); }); });
+      document.getElementById('lbClose').addEventListener('click', closeLb);
+      document.getElementById('lbPrev').addEventListener('click', function () { show(current - 1); });
+      document.getElementById('lbNext').addEventListener('click', function () { show(current + 1); });
+      lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+      document.addEventListener('keydown', function (e) {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLb();
+        if (e.key === 'ArrowLeft') show(current - 1);
+        if (e.key === 'ArrowRight') show(current + 1);
+      });
+
+      // copy email
+      var copyBtn = document.getElementById('copyEmail');
+      var copyMsg = document.getElementById('copyMsg');
+      copyBtn.addEventListener('click', function () {
+        var email = copyBtn.getAttribute('data-email');
+        function done(ok) {
+          copyMsg.textContent = ok ? 'Email address copied.' : 'Please copy it manually: ' + email;
+          setTimeout(function () { copyMsg.textContent = ''; }, 3500);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(function () { done(true); }, function () { done(false); });
+        } else { done(false); }
+      });
+    })();
+  </script>
+</body>
+
+</html>
