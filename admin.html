@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>Portfolio admin | Quang Thong</title>
+  <title>Admin | Quang Thong portfolio</title>
   <link rel="icon" href="/logo-musician.svg" type="image/svg+xml">
   <style>
     :root { --ink: #0a1c20; --ink2: #0f2a2f; --card: #12292f; --line: rgba(255,255,255,.12); --text: #e7f0f1; --mute: #9fb4b7; --teal: #2dd4bf; --teal-d: #0f766e; --pink: #f5b8cf; --ombre: linear-gradient(120deg, #2dd4bf, #c9dede 60%, #f5b8cf); --r: 14px; }
@@ -14,7 +14,7 @@
     header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 20px; border-bottom: 1px solid var(--line); background: rgba(10,28,32,.8); position: sticky; top: 0; z-index: 5; backdrop-filter: blur(10px); }
     .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; } .brand img { width: 30px; height: 30px; border-radius: 8px; }
     .wrap { max-width: 1080px; margin: 0 auto; padding: 24px 16px 80px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 9px 18px; border-radius: 999px; border: 1px solid transparent; font: 600 14px inherit; cursor: pointer; color: var(--ink); background: var(--ombre); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 9px 18px; border-radius: 999px; border: 1px solid transparent; font-weight: 600; font-size: 14px; font-family: inherit; cursor: pointer; color: var(--ink); background: var(--ombre); }
     .btn:disabled { opacity: .5; cursor: default; }
     .btn.ghost { background: transparent; color: var(--text); border-color: var(--line); } .btn.ghost:hover { border-color: var(--pink); color: var(--pink); }
     .btn.danger { background: transparent; color: #fda4af; border-color: rgba(253,164,175,.4); }
@@ -22,7 +22,7 @@
     .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; }
     h2 { font-size: 22px; margin-bottom: 4px; } .sub { color: var(--mute); font-size: 14px; margin-bottom: 18px; }
     .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
-    .tab { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--mute); font: 600 14px inherit; cursor: pointer; }
+    .tab { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--mute); font-weight: 600; font-size: 14px; font-family: inherit; cursor: pointer; }
     .tab.active { background: var(--ombre); color: var(--ink); border-color: transparent; }
     input, select, textarea { font: inherit; color: var(--text); background: rgba(255,255,255,.06); border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; width: 100%; }
     input:focus, select:focus, textarea:focus { outline: 0; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(45,212,191,.18); }
@@ -66,14 +66,30 @@
     .cbody { padding: 0 16px 16px; display: grid; gap: 12px; }
     .item { border-left: 3px solid var(--teal); padding: 6px 12px; background: rgba(255,255,255,.04); border-radius: 0 8px 8px 0; white-space: pre-wrap; }
     .item time { display: block; font-size: 12px; color: var(--mute); }
+    .sites { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; padding: 6px; border-radius: 999px; background: rgba(255,255,255,.05); border: 1px solid var(--line); width: fit-content; }
+    .site { padding: 9px 20px; border-radius: 999px; border: 0; background: transparent; color: var(--mute); font-weight: 700; font-size: 14px; font-family: inherit; cursor: pointer; transition: background-color .2s, color .2s; }
+    .site.active[data-site=musician] { background: linear-gradient(120deg, #2dd4bf, #f5b8cf); color: #0a1c20; }
+    .site.active[data-site=developer] { background: linear-gradient(120deg, #FF6699, #CC0066); color: #fff; }
+    .site.active[data-site=audio] { background: linear-gradient(120deg, #660066, #CC00FF); color: #fff; }
+    .tab .dotn { display: inline-block; min-width: 18px; padding: 0 6px; margin-left: 6px; border-radius: 99px; background: #fb7185; color: #fff; font-size: 11px; line-height: 18px; text-align: center; } .tab .dotn[hidden] { display: none; }
+    .mgr-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 4px; }
+    .items { display: grid; gap: 10px; margin-top: 14px; }
+    .it { display: flex; align-items: center; gap: 14px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,.04); }
+    .it img { width: 64px; height: 48px; object-fit: cover; border-radius: 8px; flex: none; }
+    .it .tx { flex: 1; min-width: 0; } .it .tx b { display: block; } .it .tx small { color: var(--mute); display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .feed { display: grid; gap: 6px; margin-bottom: 18px; } .feed h3 { font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+    .fi { display: flex; gap: 10px; align-items: baseline; padding: 8px 12px; border-radius: 10px; background: rgba(255,255,255,.04); font-size: 14px; } .fi time { margin-left: auto; color: var(--mute); font-size: 12px; white-space: nowrap; } .fi.fresh { animation: flash 2.4s ease-out; }
+    .fi span.m { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--mute); min-width: 0; }
+    @keyframes flash { from { background: rgba(45,212,191,.5) } to { background: rgba(255,255,255,.04) } }
+    .badge.s-portfolio { background: rgba(45,212,191,.18); color: #2dd4bf; } .badge.s-developer { background: rgba(255,102,153,.2); color: #ff8fb4; } .badge.s-audio { background: rgba(204,0,255,.2); color: #e07bff; } .badge.s-band { background: rgba(255,138,74,.2); color: #ffa86b; }
     .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-bottom: 16px; }
     .stat { padding: 12px 14px; border-radius: 12px; background: rgba(255,255,255,.04); border: 1px solid var(--line); } .stat b { display: block; font-size: 24px; background: var(--ombre); -webkit-background-clip: text; background-clip: text; color: transparent; } .stat span { font-size: 12px; color: var(--mute); }
   </style>
 </head>
 <body>
   <header class="top">
-    <a class="brand" href="musician.html" style="color:inherit;text-decoration:none"><img src="/logo-musician.svg" alt="">Portfolio admin</a>
-    <div class="row"><a class="btn ghost sm" href="musician.html">View site</a><button id="signOut" class="btn ghost sm" hidden>Sign out</button></div>
+    <a class="brand" href="musician.html" style="color:inherit;text-decoration:none"><img src="/logo-musician.svg" alt="">Admin</a>
+    <div class="row"><a id="viewSite" class="btn ghost sm" href="musician.html">View site</a><button id="signOut" class="btn ghost sm" hidden>Sign out</button></div>
   </header>
 
   <div id="loginBox" class="login card">
@@ -84,13 +100,12 @@
   </div>
 
   <main id="app" class="wrap" hidden>
-    <div class="tabs" role="tablist">
-      <button class="tab active" data-tab="schedule">Schedule</button>
-      <button class="tab" data-tab="photos">Photos</button>
-      <button class="tab" data-tab="videos">Videos</button>
-      <button class="tab" data-tab="texts">Texts</button>
-      <button class="tab" data-tab="data">Data</button>
+    <div class="sites" role="tablist" aria-label="Which portfolio">
+      <button class="site active" data-site="musician">Musician</button>
+      <button class="site" data-site="developer">Developer</button>
+      <button class="site" data-site="audio">Audio plugins</button>
     </div>
+    <div id="tabs" class="tabs" role="tablist"></div>
 
     <section id="tab-schedule" class="card">
       <h2>Schedule</h2>
@@ -159,13 +174,20 @@
       <div id="textList" class="texts"></div>
     </section>
 
+    <section id="tab-devprojects" class="card" data-manager="devprojects" hidden></section>
+    <section id="tab-devskills" class="card" data-manager="devskills" hidden></section>
+    <section id="tab-devexp" class="card" data-manager="devexp" hidden></section>
+    <section id="tab-plugins" class="card" data-manager="plugins" hidden></section>
+    <section id="tab-devtexts" class="card" hidden><h2>Developer page texts</h2><p class="sub">Edit the main sentences of the Developer page. "Reset" brings back the original text.</p><p id="devtextMsg" class="msg" aria-live="polite"></p><div id="devtextList" class="texts"></div></section>
+    <section id="tab-audtexts" class="card" hidden><h2>Audio page texts</h2><p class="sub">Edit the main sentences of the Audio Plugins page. "Reset" brings back the original text.</p><p id="audtextMsg" class="msg" aria-live="polite"></p><div id="audtextList" class="texts"></div></section>
     <section id="tab-data" class="card" hidden>
       <h2>Data</h2>
-      <p class="sub">Everything in one place: messages from the contact forms, grouped by person, plus a full backup you can download.</p>
+      <p class="sub">Messages from the contact forms of all three portfolios, grouped by person and updated live. Pick a site to focus on it.</p>
+      <div class="feed" id="feed"><h3><span class="live on" id="feedLive"><i></i>Live</span> Latest activity</h3><div id="feedList"></div></div>
       <div id="stats" class="stats"></div>
       <div class="row" style="margin-bottom:14px">
         <input id="dSearch" placeholder="Search name, contact or message" style="flex:1;min-width:200px">
-        <select id="dSite" style="width:auto"><option value="">All sites</option><option value="portfolio">Portfolio</option><option value="band">Band</option></select>
+        <select id="dSite" style="width:auto"><option value="">All sites</option><option value="portfolio">Musician</option><option value="developer">Developer</option><option value="audio">Audio plugins</option><option value="band">Band</option></select>
         <select id="dStatus" style="width:auto"><option value="">All statuses</option></select>
       </div>
       <div class="row" style="margin-bottom:14px">

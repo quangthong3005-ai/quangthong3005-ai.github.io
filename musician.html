@@ -244,6 +244,9 @@
     .cform input, .cform textarea { font: 400 16px var(--sans); color: var(--ink); background: rgba(255, 255, 255, .72); border: 1px solid rgba(10, 28, 32, .18); border-radius: 14px; padding: 12px 14px; width: 100%; transition: border-color .2s, box-shadow .2s, background-color .2s; }
     .cform input:focus, .cform textarea:focus { outline: 0; border-color: var(--teal-deep); background: #fff; box-shadow: 0 0 0 4px rgba(15, 118, 110, .16); }
     .cform .btn { justify-self: start; }
+    .cform .via { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 4px; font-size: 13px; color: #1c3a40; }
+    .cform .via button { padding: 8px 16px; border-radius: 999px; border: 1.5px solid rgba(10, 28, 32, .4); background: rgba(255, 255, 255, .45); color: var(--ink); font-weight: 600; font-size: 13px; font-family: inherit; cursor: pointer; transition: background-color .2s, color .2s, border-color .2s; }
+    .cform .via button:hover { background: var(--ink); color: #fff; border-color: var(--ink); } .cform .via button:disabled, .cform .btn:disabled { opacity: .55; cursor: default; }
     .cform .note { min-height: 22px; font-size: 14px; color: #0f4f4a; }
     @media (max-width: 560px) { .cform .row2 { grid-template-columns: 1fr; } .cform .btn { justify-self: stretch; } }
     .yt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 22px; margin-top: 34px; }
@@ -404,6 +407,12 @@
           </div>
           <label>Message<textarea name="message" rows="4" required maxlength="2000"></textarea></label>
           <button class="btn btn-ink" type="submit">Send message</button>
+          <div class="via"><span>or send it with</span>
+            <button type="button" data-via="email">Email</button>
+            <button type="button" data-via="gmail">Gmail</button>
+            <button type="button" data-via="zalo">Zalo</button>
+            <button type="button" data-via="whatsapp">WhatsApp</button>
+          </div>
           <p id="qtNote" class="note" aria-live="polite"></p>
         </form>
       </div>
