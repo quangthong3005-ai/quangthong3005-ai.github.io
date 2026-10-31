@@ -237,6 +237,30 @@
     .foot { display: flex; flex-wrap: wrap; gap: 18px 36px; align-items: center; justify-content: space-between; }
     .foot ul { display: flex; flex-wrap: wrap; gap: 8px 28px; } .foot a:hover { color: var(--teal-bright); }
 
+    .contact .btn-line { display: none; }
+    .cform { max-width: 620px; margin: 34px auto 0; text-align: left; display: grid; gap: 14px; }
+    .cform .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .cform label { display: grid; gap: 6px; font-size: 13px; font-weight: 600; letter-spacing: .04em; color: #1c3a40; }
+    .cform input, .cform textarea { font: 400 16px var(--sans); color: var(--ink); background: rgba(255, 255, 255, .72); border: 1px solid rgba(10, 28, 32, .18); border-radius: 14px; padding: 12px 14px; width: 100%; transition: border-color .2s, box-shadow .2s, background-color .2s; }
+    .cform input:focus, .cform textarea:focus { outline: 0; border-color: var(--teal-deep); background: #fff; box-shadow: 0 0 0 4px rgba(15, 118, 110, .16); }
+    .cform .btn { justify-self: start; }
+    .cform .note { min-height: 22px; font-size: 14px; color: #0f4f4a; }
+    @media (max-width: 560px) { .cform .row2 { grid-template-columns: 1fr; } .cform .btn { justify-self: stretch; } }
+    .yt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 22px; margin-top: 34px; }
+    .yt-grid:empty { display: none; }
+    .yt { position: relative; aspect-ratio: 16 / 9; border-radius: 18px; overflow: hidden; background: #000 center / cover no-repeat; cursor: pointer; border: 0; padding: 0; box-shadow: 0 18px 50px -22px rgba(45, 212, 191, .35); transition: transform .25s ease; }
+    .yt:hover { transform: translateY(-3px); }
+    .yt::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(6, 18, 21, .85)); }
+    .yt .pl { position: absolute; z-index: 1; left: 50%; top: 50%; width: 58px; height: 58px; margin: -29px 0 0 -29px; border-radius: 50%; background: linear-gradient(120deg, #2dd4bf, #f5b8cf); display: grid; place-items: center; }
+    .yt .pl::before { content: ''; border-left: 16px solid var(--ink); border-top: 10px solid transparent; border-bottom: 10px solid transparent; margin-left: 4px; }
+    .yt span.t { position: absolute; z-index: 1; left: 14px; right: 14px; bottom: 12px; text-align: left; color: #fff; font-weight: 600; font-size: 15px; }
+    .yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .gal2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 16px; }
+    .gal2:empty { display: none; }
+    .gal2 figure { position: relative; overflow: hidden; border-radius: 20px; background: var(--ink); aspect-ratio: 4 / 3; }
+    .gal2 img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s cubic-bezier(.22, .8, .24, 1); }
+    .gal2 figure:hover img { transform: scale(1.06); }
+    .gal2 figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 14px 10px; color: #fff; font-size: 14px; font-weight: 600; background: linear-gradient(180deg, transparent, rgba(6, 18, 21, .8)); }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -256,7 +280,7 @@
         <a class="hide-sm" href="#gallery">Gallery</a>
         <a class="hide-sm" href="audio-plugin.html">Audio Plugins</a>
         <a class="hide-sm" href="developer.html">Developer</a>
-        <a class="btn btn-teal btn-sm" href="#contact">Get in touch</a>
+        <a class="btn btn-teal btn-sm" href="#contact">Contact me</a>
       </div>
     </nav>
   </header>
@@ -269,10 +293,9 @@
         <div>
           <p class="eyebrow up">Keyboardist</p>
           <h1 class="up">Hi, I'm <span class="grad shimmer">Quang Thong.</span><br>I play keys.</h1>
-          <p class="lead up">I'm a keyboardist who loves playing live and making music together with other people.</p>
+          <p class="lead up" data-text="heroLead">I'm a keyboardist who loves playing live and making music together with other people.</p>
           <div class="cta up">
             <a class="btn btn-teal" href="#schedule">See my schedule</a>
-            <a class="btn btn-line" href="#contact">Book me</a>
           </div>
           <div class="up">
             <a id="nextShow" class="next-pill" href="#schedule" hidden></a>
@@ -312,7 +335,6 @@
           <h3>Coming up</h3>
           <ul id="qtComing"></ul>
         </div>
-        <p class="sch-cta">Want me at your show or session? <a href="#contact">Get in touch</a></p>
       </div>
     </section>
 
@@ -323,14 +345,13 @@
           <p class="eyebrow rv">About</p>
           <h2 class="rv d1">Music is better <span class="grad">played together.</span></h2>
           <!-- TODO: replace with your real story, genres and influences -->
-          <p class="big rv d2">I'm Quang Thong, a keyboardist with Dynamites Band. I love playing live and I take care of the details that make a song feel right on stage.</p>
-          <p class="rv d2">I also play with other bands and artists. Tell me about your show, recording or project and we can find the sound that fits it.</p>
+          <p class="big rv d2" data-text="aboutP1">I'm Quang Thong, a keyboardist with Dynamites Band. I love playing live and I take care of the details that make a song feel right on stage.</p>
+          <p class="rv d2" data-text="aboutP2">I also play with other bands and artists. Tell me about your show, recording or project and we can find the sound that fits it.</p>
         </div>
         <dl class="facts rv d2">
           <div class="fact"><dt>Instrument</dt><dd>Keyboards</dd></div>
           <div class="fact"><dt>Band</dt><dd><a href="https://quangthong3005-ai.github.io/Dynamite-band/" target="_blank" rel="noopener">Dynamites Band</a></dd></div>
           <div class="fact"><dt>Available for</dt><dd>Live shows, collaborations</dd></div>
-          <div class="fact"><dt>Contact</dt><dd><a href="#contact">Send a message</a></dd></div>
         </dl>
       </div>
     </section>
@@ -341,7 +362,7 @@
         <div class="sec-head rv">
           <p class="eyebrow">Music</p>
           <h2><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span> Live performance</h2>
-          <p>Press play to watch a performance.</p>
+          <p data-text="musicHint">Press play to watch a performance.</p>
         </div>
         <div class="video-frame rv d1">
           <video controls preload="none" playsinline poster="/videos/performance-poster.jpg">
@@ -350,6 +371,7 @@
           </video>
         </div>
         <div class="video-cap rv d2"><b>Performance</b><span>Quang Thong &middot; Dynamites Band</span></div>
+        <div id="qtVideos" class="yt-grid"></div>
       </div>
     </section>
 
@@ -365,20 +387,25 @@
           <figure><img src="/images/portrait.jpg" width="960" height="960" alt="Portrait with keyboard" loading="lazy" decoding="async" /><figcaption>Portrait</figcaption></figure>
           <figure><img src="/images/illustration.jpg" width="855" height="866" alt="Illustration of a keyboardist playing" loading="lazy" decoding="async" /><figcaption>Illustration</figcaption></figure>
         </div>
+        <div id="qtGal" class="gal2"></div>
       </div>
     </section>
 
     <!-- contact -->
     <section id="contact" class="contact below">
       <div class="wrap">
-        <p class="eyebrow rv">Contact</p>
+        <p class="eyebrow rv">Contact me</p>
         <h2 class="rv d1">Let's make music.</h2>
-        <p class="lead rv d2">For bookings, collaborations and questions, send me a message.</p>
-        <div class="cta rv d2">
-          <a class="btn btn-ink" href="mailto:quangthong3005@gmail.com?subject=Hi Quang Thong, I want to connect about music">Send an email</a>
-          <a class="btn btn-line" href="https://mail.google.com/mail/?view=cm&fs=1&to=quangthong3005@gmail.com&su=Hi%20Quang%20Thong%2C%20I%20want%20to%20connect%20about%20music" target="_blank" rel="noopener">Open in Gmail</a>
-        </div>
-        <p class="addr rv d3">or write to <strong>quangthong3005@gmail.com</strong></p>
+        <p class="lead rv d2" data-text="contactLead">For shows, collaborations and questions, send me a message.</p>
+        <form id="qtContact" class="cform rv d2" novalidate>
+          <div class="row2">
+            <label>Name<input name="name" required maxlength="80" autocomplete="name"></label>
+            <label>Email or phone<input name="contact" required maxlength="120" autocomplete="email"></label>
+          </div>
+          <label>Message<textarea name="message" rows="4" required maxlength="2000"></textarea></label>
+          <button class="btn btn-ink" type="submit">Send message</button>
+          <p id="qtNote" class="note" aria-live="polite"></p>
+        </form>
       </div>
     </section>
   </main>
@@ -390,7 +417,6 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="audio-plugin.html">Audio Plugins</a></li>
         <li><a href="developer.html">Developer</a></li>
-        <li><a href="mailto:quangthong3005@gmail.com">Email</a></li>
       </ul>
       <p>&copy;2026 Quang Thong</p>
     </div>
