@@ -28,6 +28,7 @@
     "vite": "^8.3.5"
   },
   "dependencies": {
+    "firebase": "^11.0.0",
     "scrollreveal": "^4.0.9"
   }
 }
