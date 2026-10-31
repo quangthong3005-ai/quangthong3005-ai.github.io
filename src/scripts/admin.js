@@ -2,7 +2,8 @@ import { initializeApp } from 'firebase/app'
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth'
 import { getFirestore, collection, query, where, orderBy, onSnapshot, doc, getDoc, getDocs, setDoc, addDoc, deleteDoc, updateDoc, serverTimestamp } from 'firebase/firestore'
 import { firebaseConfig, adminEmails } from './firebase-config.js'
-import { TEXT_FIELDS } from './qt-texts.js'
+import { TEXT_FIELDS, DEV_TEXTS, AUDIO_TEXTS } from './qt-texts.js'
+import { DEV_PROJECTS, DEV_SKILLS, DEV_EXP, PLUGINS } from './qt-defaults.js'
 
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
@@ -25,12 +26,10 @@ onAuthStateChanged(auth, (user) => {
   $('loginBox').hidden = ok; $('app').hidden = !ok; $('signOut').hidden = !ok
   $('loginMsg').textContent = user && !user.isAnonymous && !ok ? user.email + ' is not allowed to use this page.' : ''
   stops.splice(0).forEach((s) => s())
-  if (ok) { subSchedule(); subPhotos(); subVideos(); loadTexts(); subData() } else drawCal()
+  if (ok) { subSchedule(); subPhotos(); subVideos(); loadTexts('qt', TEXT_FIELDS, 'textList', 'textMsg'); loadTexts('dev', DEV_TEXTS, 'devtextList', 'devtextMsg'); loadTexts('audio', AUDIO_TEXTS, 'audtextList', 'audtextMsg'); MANAGERS.forEach(startManager); subData() } else drawCal()
 })
 
-document.querySelectorAll('.tab').forEach((b) => b.addEventListener('click', () => {
-  document.querySelectorAll('.tab').forEach((x) => { x.classList.toggle('active', x === b); $('tab-' + x.dataset.tab).hidden = x !== b })
-}))
+/* tabs are built per site in showSite() below */
 
 /* ---------------- schedule ---------------- */
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -185,26 +184,151 @@ function subVideos() {
 }
 
 /* ---------------- texts ---------------- */
-async function loadTexts() {
+async function loadTexts(docId, fields, listId, msgId) {
   let saved = {}
-  try { const s = await getDoc(doc(db, 'site', 'qt')); if (s.exists()) saved = s.data() } catch { /* defaults */ }
-  const box = $('textList'); box.innerHTML = ''
-  TEXT_FIELDS.forEach((f) => {
+  try { const s = await getDoc(doc(db, 'site', docId)); if (s.exists()) saved = s.data() } catch { /* defaults */ }
+  const box = $(listId); box.innerHTML = ''
+  fields.forEach((f) => {
     const wrap = el('div'); const lab = el('label', '', f.label)
-    const inp = f.multi ? el('textarea') : el('input'); if (f.multi) inp.rows = 3; inp.maxLength = 600; inp.value = saved[f.key] ?? f.default
+    const inp = f.multi ? el('textarea') : el('input'); if (f.multi) inp.rows = 3; inp.maxLength = 600; inp.value = saved[f.key] || f.default
     lab.append(inp)
     const row = el('div', 'row'); row.style.marginTop = '8px'
     const save = el('button', 'btn sm', 'Save'); save.type = 'button'
     const reset = el('button', 'btn ghost sm', 'Reset'); reset.type = 'button'
-    save.addEventListener('click', async () => { await setDoc(doc(db, 'site', 'qt'), { [f.key]: inp.value.trim() }, { merge: true }); flash('textMsg', 'Saved.') })
-    reset.addEventListener('click', async () => { inp.value = f.default; await setDoc(doc(db, 'site', 'qt'), { [f.key]: '' }, { merge: true }); flash('textMsg', 'Reset to the original text.') })
+    save.addEventListener('click', async () => { await setDoc(doc(db, 'site', docId), { [f.key]: inp.value.trim() }, { merge: true }); flash(msgId, 'Saved.') })
+    reset.addEventListener('click', async () => { inp.value = f.default; await setDoc(doc(db, 'site', docId), { [f.key]: '' }, { merge: true }); flash(msgId, 'Reset to the original text.') })
     row.append(save, reset); wrap.append(lab, row); box.append(wrap)
   })
 }
 
+/* ---------------- list managers (projects, skills, experience, plugins) ---------------- */
+const MANAGERS = [
+  { id: 'devprojects', title: 'Projects', sub: 'Projects shown on the Developer page. Use the arrows to change the order.', defaults: DEV_PROJECTS,
+    fields: [{ k: 'title', l: 'Title', max: 100, req: 1, full: 1 }, { k: 'desc', l: 'Description', ta: 1, max: 400, full: 1 }, { k: 'tech', l: 'Tech used', max: 120 }, { k: 'linkLabel', l: 'Link text', max: 40 }, { k: 'link', l: 'Link (https://...)', type: 'url', max: 300, full: 1 }, { k: 'image', l: 'Image (optional)', img: 1, full: 1 }],
+    head: (d) => d.title, meta: (d) => d.tech || d.desc },
+  { id: 'devskills', title: 'Skills', sub: 'Skills shown on the Developer page.', defaults: DEV_SKILLS, fields: [{ k: 'name', l: 'Skill', max: 40, req: 1, full: 1 }], head: (d) => d.name, meta: () => '' },
+  { id: 'devexp', title: 'Experience & education', sub: 'Timeline entries on the Developer page.', defaults: DEV_EXP,
+    fields: [{ k: 'period', l: 'Period (e.g. 2026 - Present)', max: 40 }, { k: 'title', l: 'Role or degree', max: 100, req: 1 }, { k: 'text', l: 'Description', ta: 1, max: 400, full: 1 }], head: (d) => d.title, meta: (d) => d.period },
+  { id: 'plugins', title: 'Plugin products', sub: 'Add, edit and remove plugins. A picture is optional: without one the card shows a dial.', defaults: PLUGINS,
+    fields: [{ k: 'name', l: 'Plugin name', max: 60, req: 1 }, { k: 'tag', l: 'Type (Dynamics, Filter...)', max: 30, list: ['Dynamics', 'Filter', 'Harmonic', 'Modulation', 'Reverb', 'Delay', 'Utility'] }, { k: 'desc', l: 'Description', ta: 1, max: 500, full: 1 }, { k: 'linkLabel', l: 'Link text', max: 40 }, { k: 'link', l: 'Link (demo, download, video...)', type: 'url', max: 300, full: 1 }, { k: 'image', l: 'Picture / screenshot', img: 1, full: 1 }],
+    head: (d) => d.name, meta: (d) => d.tag || d.desc },
+]
+
+function startManager(m) {
+  const root = $('tab-' + m.id); if (!root || root.dataset.built) return
+  root.dataset.built = '1'
+  root.innerHTML = ''
+  const head = el('div', 'mgr-head'); head.append(el('h2', '', m.title))
+  const addBtn = el('button', 'btn sm', '+ Add'); addBtn.type = 'button'; head.append(addBtn)
+  const form = el('form', 'form'); form.hidden = true
+  const grid = el('div', 'grid'); form.append(grid)
+  const inputs = {}
+  m.fields.forEach((f) => {
+    const lab = el('label', f.full ? 'full' : '', f.l)
+    const inp = f.ta ? el('textarea') : el('input')
+    if (f.ta) inp.rows = 3
+    if (f.img) { inp.type = 'file'; inp.accept = 'image/*' } else { if (f.type) inp.type = f.type; inp.maxLength = f.max; if (f.req) inp.required = true }
+    if (f.list) { const dl = el('datalist'); dl.id = m.id + '_' + f.k; f.list.forEach((v) => { const o = el('option'); o.value = v; dl.append(o) }); inp.setAttribute('list', dl.id); lab.append(dl) }
+    lab.append(inp); grid.append(lab); inputs[f.k] = inp
+  })
+  const imgKeep = el('label', 'full'); const rm = el('input'); rm.type = 'checkbox'; rm.style.width = 'auto'; imgKeep.append(rm, document.createTextNode(' Remove the current picture')); imgKeep.style.display = 'flex'; imgKeep.style.gap = '8px'; imgKeep.style.alignItems = 'center'; imgKeep.hidden = true
+  if (m.fields.some((f) => f.img)) grid.append(imgKeep)
+  const row = el('div', 'row'); row.style.marginTop = '14px'
+  const save = el('button', 'btn', 'Save'); save.type = 'submit'
+  const cancel = el('button', 'btn ghost', 'Cancel'); cancel.type = 'button'
+  row.append(save, cancel); form.append(row)
+  const msg = el('p', 'msg'); msg.setAttribute('aria-live', 'polite')
+  const listBox = el('div', 'items')
+  root.append(head, el('p', 'sub', m.sub), form, msg, listBox)
+
+  let editing = null, rows = []
+  const close = () => { form.hidden = true; editing = null }
+  const open = (r) => {
+    editing = r || null; form.reset(); imgKeep.hidden = !(r && r.image); rm.checked = false
+    m.fields.forEach((f) => { if (!f.img) inputs[f.k].value = (r && r[f.k]) || '' })
+    save.textContent = r ? 'Save changes' : 'Add'; form.hidden = false; (Object.values(inputs)[0]).focus()
+  }
+  addBtn.addEventListener('click', () => open(null)); cancel.addEventListener('click', close)
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); save.disabled = true
+    try {
+      const data = {}
+      for (const f of m.fields) {
+        if (f.img) { const file = inputs[f.k].files[0]; if (file) data[f.k] = await resize(file); else if (editing && rm.checked) data[f.k] = ''; else if (!editing) data[f.k] = '' }
+        else data[f.k] = inputs[f.k].value.trim()
+      }
+      if (editing) await setDoc(doc(db, m.id, editing.id), data, { merge: true })
+      else await addDoc(collection(db, m.id), { ...data, order: Date.now(), createdAt: serverTimestamp() })
+      close(); flash2(msg, 'Saved. The website is updated.')
+    } catch { flash2(msg, 'Could not save. Check the picture size and that the Firestore rules are published.') }
+    save.disabled = false
+  })
+  const swap = async (i, j) => { const a = rows[i], b = rows[j]; if (!a || !b) return; await Promise.all([updateDoc(doc(db, m.id, a.id), { order: b.order }), updateDoc(doc(db, m.id, b.id), { order: a.order })]) }
+  stops.push(onSnapshot(query(collection(db, m.id), orderBy('order')), (snap) => {
+    rows = snap.docs.map((d) => ({ id: d.id, ...d.data() })); listBox.innerHTML = ''
+    if (!rows.length) {
+      listBox.append(el('p', 'sub', 'Nothing added yet, so the website shows its built-in version.'))
+      const load = el('button', 'btn ghost sm', 'Load the current items so I can edit them'); load.type = 'button'
+      load.addEventListener('click', async () => { load.disabled = true; const t = Date.now(); for (const [i, d] of m.defaults.entries()) await addDoc(collection(db, m.id), { ...d, order: t + i, createdAt: serverTimestamp() }) })
+      listBox.append(load)
+    }
+    rows.forEach((r, i) => {
+      const it = el('div', 'it')
+      if (r.image) { const im = document.createElement('img'); im.src = r.image; im.alt = ''; it.append(im) }
+      const tx = el('div', 'tx'); tx.append(el('b', '', m.head(r)), el('small', '', m.meta(r) || '')); it.append(tx)
+      const up = el('button', 'btn ghost sm', '\u2191'); up.type = 'button'; up.disabled = i === 0; up.addEventListener('click', () => swap(i, i - 1))
+      const dn = el('button', 'btn ghost sm', '\u2193'); dn.type = 'button'; dn.disabled = i === rows.length - 1; dn.addEventListener('click', () => swap(i, i + 1))
+      const ed = el('button', 'btn ghost sm', 'Edit'); ed.type = 'button'; ed.addEventListener('click', () => { open(r); form.scrollIntoView({ behavior: 'smooth', block: 'nearest' }) })
+      const del = el('button', 'btn danger sm', 'Delete'); del.type = 'button'; del.addEventListener('click', () => { if (confirm('Delete "' + m.head(r) + '"?')) deleteDoc(doc(db, m.id, r.id)) })
+      it.append(up, dn, ed, del); listBox.append(it)
+    })
+  }))
+}
+const flash2 = (node, m) => { node.textContent = m; setTimeout(() => { if (node.textContent === m) node.textContent = '' }, 4500) }
+
+/* ---------------- site switcher ---------------- */
+const SITES = {
+  musician: { tabs: [['schedule', 'Schedule'], ['photos', 'Photos'], ['videos', 'Videos'], ['texts', 'Texts'], ['data', 'Data']], data: 'portfolio', view: 'musician.html' },
+  developer: { tabs: [['devprojects', 'Projects'], ['devskills', 'Skills'], ['devexp', 'Experience'], ['devtexts', 'Texts'], ['data', 'Data']], data: 'developer', view: 'developer.html' },
+  audio: { tabs: [['plugins', 'Plugins'], ['audtexts', 'Texts'], ['data', 'Data']], data: 'audio', view: 'audio-plugin.html' },
+}
+const ALL_PANELS = ['schedule', 'photos', 'videos', 'texts', 'devprojects', 'devskills', 'devexp', 'devtexts', 'plugins', 'audtexts', 'data']
+let curSite = 'musician'
+function showTab(t) {
+  ALL_PANELS.forEach((p) => { $('tab-' + p).hidden = p !== t })
+  document.querySelectorAll('#tabs .tab').forEach((b) => b.classList.toggle('active', b.dataset.tab === t))
+  if (t === 'data') { $('dSite').value = SITES[curSite].data; drawData(); markSeen() }
+  try { history.replaceState(null, '', '#' + curSite + '/' + t) } catch { /* ignore */ }
+}
+function showSite(name, tab) {
+  curSite = SITES[name] ? name : 'musician'
+  document.querySelectorAll('.site').forEach((b) => b.classList.toggle('active', b.dataset.site === curSite))
+  $('viewSite').href = SITES[curSite].view
+  const box = $('tabs'); box.innerHTML = ''
+  SITES[curSite].tabs.forEach(([id, label]) => {
+    const b = el('button', 'tab', label); b.dataset.tab = id; b.addEventListener('click', () => showTab(id))
+    if (id === 'data') { const n = el('span', 'dotn'); n.id = 'newBadge'; n.hidden = true; b.append(n) }
+    box.append(b)
+  })
+  updateBadge()
+  showTab(tab && SITES[curSite].tabs.some((t) => t[0] === tab) ? tab : SITES[curSite].tabs[0][0])
+}
+document.querySelectorAll('.site').forEach((b) => b.addEventListener('click', () => showSite(b.dataset.site)))
+
 /* ---------------- data ---------------- */
 const STATUS = { new: 'New', contacted: 'Contacted', quoted: 'Quoted', booked: 'Booked', done: 'Done', lost: 'Not going ahead' }
-let requests = [], notes = {}, allShows = []
+let requests = [], notes = {}, allShows = [], firstSnap = true
+const SITE_LABEL = { portfolio: 'Musician', developer: 'Developer', audio: 'Audio', band: 'Band' }
+const siteOf = (r) => r.site || 'band'
+const SEEN_KEY = 'adminSeenAt'
+const seenAt = () => { try { return Number(localStorage.getItem(SEEN_KEY)) || 0 } catch { return 0 } }
+function markSeen() { try { localStorage.setItem(SEEN_KEY, String(Date.now())) } catch { /* ignore */ } updateBadge() }
+function updateBadge() {
+  const b = $('newBadge'); if (!b) return
+  const n = requests.filter((r) => ms(r.createdAt) > seenAt()).length
+  b.textContent = String(n); b.hidden = !n || !$('tab-data').hidden
+}
+const ago = (t) => { const s = Math.max(0, (Date.now() - ms(t)) / 1000); if (!ms(t) || s < 45) return 'just now'; if (s < 3600) return Math.round(s / 60) + ' min ago'; if (s < 86400) return Math.round(s / 3600) + ' h ago'; return Math.round(s / 86400) + ' d ago' }
 const norm = (s) => String(s || '').trim().toLowerCase()
 const ms = (t) => (t && t.toMillis ? t.toMillis() : 0)
 const fmt = (t) => { const d = t && t.toDate ? t.toDate() : null; return d ? d.toLocaleDateString('vi-VN') + ' ' + d.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }) : 'just now' }
@@ -215,9 +339,26 @@ const download = (name, text, type) => { const a = document.createElement('a'); 
 Object.entries(STATUS).forEach(([k, v]) => { const o = el('option', '', v); o.value = k; $('dStatus').append(o) })
 
 function subData() {
-  stops.push(onSnapshot(query(collection(db, 'requests'), orderBy('createdAt', 'desc')), (s) => { requests = s.docs.map((d) => ({ id: d.id, ...d.data() })); drawData() }))
+  stops.push(onSnapshot(query(collection(db, 'requests'), orderBy('createdAt', 'desc')), (s) => {
+    requests = s.docs.map((d) => ({ id: d.id, ...d.data() }))
+    const fresh = new Set(firstSnap ? [] : s.docChanges().filter((c) => c.type === 'added').map((c) => c.doc.id))
+    firstSnap = false
+    drawData(); drawFeed(fresh); updateBadge()
+  }))
+  stops.push(() => { firstSnap = true })
+  const tickId = setInterval(() => drawFeed(), 30000); stops.push(() => clearInterval(tickId))
   stops.push(onSnapshot(collection(db, 'customers'), (s) => { notes = {}; s.forEach((d) => { notes[d.id] = d.data() }); drawData() }))
   stops.push(onSnapshot(collection(db, 'shows'), (s) => { allShows = s.docs.map((d) => ({ id: d.id, ...d.data() })); drawData() }))
+}
+
+function drawFeed(fresh = new Set()) {
+  const box = $('feedList'); if (!box) return
+  box.replaceChildren(...requests.slice(0, 8).map((r) => {
+    const row = el('div', 'fi' + (fresh.has(r.id) ? ' fresh' : ''))
+    row.append(el('span', 'badge s-' + siteOf(r), SITE_LABEL[siteOf(r)] || siteOf(r)), el('b', '', r.name || 'Guest'), el('span', 'm', r.message || ''), el('time', '', ago(r.createdAt)))
+    return row
+  }))
+  if (!requests.length) box.append(el('p', 'sub', 'Nothing yet. New messages will pop up here instantly.'))
 }
 
 function groups() {
@@ -228,7 +369,7 @@ function groups() {
     const g = map.get(k); g.items.push(r); g.contacts.add(r.contact)
   }
   const list = [...map.values()]
-  list.forEach((g) => { g.last = Math.max(...g.items.map((r) => ms(r.createdAt))); g.meta = notes[idOf(g.key)] || {}; g.sites = new Set(g.items.map((r) => r.site || 'band')) })
+  list.forEach((g) => { g.last = Math.max(...g.items.map((r) => ms(r.createdAt))); g.meta = notes[idOf(g.key)] || {}; g.sites = new Set(g.items.map(siteOf)) })
   return list.sort((a, b) => b.last - a.last)
 }
 function visible() {
@@ -242,8 +383,7 @@ function visible() {
 
 function drawData() {
   const all = groups()
-  const upcoming = allShows.filter((s) => s.date >= key(new Date()) && mine(s)).length
-  $('stats').replaceChildren(...[[all.length, 'Customers'], [requests.length, 'Messages'], [all.filter((g) => (g.meta.status || 'new') === 'new').length, 'New'], [upcoming, 'Upcoming shows']].map(([n, l]) => { const s = el('div', 'stat'); s.append(el('b', '', String(n)), el('span', '', l)); return s }))
+  $('stats').replaceChildren(...[[all.length, 'Customers'], [requests.length, 'Messages'], [all.filter((g) => (g.meta.status || 'new') === 'new').length, 'New'], [requests.filter((r) => siteOf(r) === 'portfolio').length, 'Musician msgs'], [requests.filter((r) => siteOf(r) === 'developer').length, 'Developer msgs'], [requests.filter((r) => siteOf(r) === 'audio').length, 'Audio msgs']].map(([n, l]) => { const s = el('div', 'stat'); s.append(el('b', '', String(n)), el('span', '', l)); return s }))
   const box = $('dList'); const open = new Set([...box.querySelectorAll('details[open]')].map((d) => d.dataset.key)); box.innerHTML = ''
   const list = visible()
   if (!list.length) { box.append(el('p', 'sub', 'No messages yet. Messages from the Contact form will appear here.')); return }
@@ -256,7 +396,7 @@ function drawData() {
     sum.append(left, right); det.append(sum)
     const body = el('div', 'cbody')
     g.items.slice().sort((a, b) => ms(a.createdAt) - ms(b.createdAt)).forEach((r) => {
-      const it = el('div', 'item'); const t = el('time'); t.append(document.createTextNode(fmt(r.createdAt) + ' · ')); t.append(el('span', 'badge' + (r.site === 'portfolio' ? '' : ' band'), r.site === 'portfolio' ? 'Portfolio' : 'Band'))
+      const it = el('div', 'item'); const t = el('time'); t.append(document.createTextNode(fmt(r.createdAt) + ' · ')); t.append(el('span', 'badge s-' + siteOf(r), SITE_LABEL[siteOf(r)] || siteOf(r)), document.createTextNode(' · ' + ago(r.createdAt)))
       it.append(t, document.createTextNode([r.type && 'Event: ' + r.type, r.date && 'Date: ' + r.date, r.place && 'Place: ' + r.place, r.message].filter(Boolean).join('\n')))
       body.append(it)
     })
@@ -271,15 +411,19 @@ function drawData() {
 
 $('dCsv').addEventListener('click', () => {
   const rows = [['Customer', 'Contact', 'Status', 'Note', 'Sent at', 'Site', 'Event', 'Date', 'Place', 'Message']]
-  for (const g of groups()) g.items.slice().sort((a, b) => ms(a.createdAt) - ms(b.createdAt)).forEach((r) => rows.push([g.name, r.contact, STATUS[g.meta.status || 'new'], g.meta.note || '', fmt(r.createdAt), r.site || 'band', r.type, r.date, r.place, r.message]))
+  for (const g of groups()) g.items.slice().sort((a, b) => ms(a.createdAt) - ms(b.createdAt)).forEach((r) => rows.push([g.name, r.contact, STATUS[g.meta.status || 'new'], g.meta.note || '', fmt(r.createdAt), SITE_LABEL[siteOf(r)] || siteOf(r), r.type, r.date, r.place, r.message]))
   download('customers.csv', '﻿' + rows.map((r) => r.map((c) => '"' + String(c ?? '').replace(/"/g, '""') + '"').join(',')).join('\r\n'), 'text/csv;charset=utf-8')
 })
 $('dJson').addEventListener('click', async () => {
   $('dMsg').textContent = 'Collecting...'
   const read = async (c) => (await getDocs(collection(db, c))).docs.map((d) => ({ id: d.id, ...d.data() }))
-  const strip = (l) => l.map(({ src, ...r }) => ({ ...r, hasImage: !!src }))
-  const [req, cus, sh, vid, ph, txt, qt] = await Promise.all([read('requests'), read('customers'), read('shows'), read('qtvideos'), read('qtphotos'), read('site'), read('members').catch(() => [])])
-  const data = { exportedAt: new Date().toISOString(), requests: req, customers: cus, shows: sh, videos: vid, photos: strip(ph), texts: txt, members: qt.map(({ photo, ...m }) => m) }
+  const strip = (l) => l.map(({ src, image, photo, ...r }) => ({ ...r, hasImage: !!(src || image || photo) }))
+  const names = ['requests', 'customers', 'shows', 'qtvideos', 'qtphotos', 'site', 'devprojects', 'devskills', 'devexp', 'plugins']
+  const res = await Promise.all(names.map((n) => read(n).catch(() => [])))
+  const data = { exportedAt: new Date().toISOString() }
+  names.forEach((n, i) => { data[n] = strip(res[i]) })
   download('portfolio-data-' + key(new Date()) + '.json', JSON.stringify(data, null, 2), 'application/json')
-  flash('dMsg', 'Downloaded. Photos are listed without the image data to keep the file small.')
+  flash('dMsg', 'Downloaded. Pictures are listed without the image data to keep the file small.')
 })
+
+{ const [s, t] = location.hash.slice(1).split('/'); showSite(s, t) }
