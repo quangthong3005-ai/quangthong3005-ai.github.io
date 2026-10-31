@@ -1,187 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>quangthong3005-ai | Developer</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
   <meta name="title" content="quangthong3005-ai | Developer">
   <meta name="description" content="Hi, my name is quangthong3005-ai. I'm the Web Developer.">
   <meta name="keywords" content="web, fullstack developer">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
   <meta name="author" content="quangthong3005-ai">
-
   <meta property="og:title" content="quangthong3005-ai | Developer" />
   <meta property="og:url" content="https://quangthong3005-ai.github.io/developer.html" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1200" />
+  <meta property="og:image" content="https://quangthong3005-ai.github.io/images/stage.jpg" />
   <meta name="twitter:title" content="quangthong3005-ai | Developer">
   <meta name="twitter:description" content="Hi, my name is quangthong3005-ai. I'm the Web Developer.">
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1200">
   <meta name="twitter:card" content="summary_large_image">
-</head>
+  <script>document.documentElement.classList.add('js')</script>
+  <style>
+    :root { --pink: #FF6699; --deep: #CC0066; --wine: #1c0612; --wine2: #2b0a1d; --blush: #fff1f6; --rose: #ffd1e1; --text: #fff; --mute: #f3c4d6; --grad: linear-gradient(120deg, #FF6699, #CC0066); --r: 18px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; -webkit-text-size-adjust: 100%; }
+    body { font: 400 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif; background: var(--wine); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; } ul, ol { list-style: none; padding: 0; }
+    .wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
+    #bar { position: fixed; left: 0; top: 0; height: 3px; width: 100%; z-index: 100; background: linear-gradient(90deg, #fff, #FF6699, #CC0066); transform: scaleX(0); transform-origin: left; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: 999px; font-weight: 700; font-size: 14px; font-family: inherit; letter-spacing: .1em; text-transform: uppercase; border: 2px solid transparent; cursor: pointer; transition: transform .25s, box-shadow .25s, background-color .25s, color .25s; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-w { background: #fff; color: var(--deep); box-shadow: 0 14px 34px -12px rgba(60, 0, 30, .55); } .btn-w:hover { box-shadow: 0 20px 40px -12px rgba(60, 0, 30, .7); }
+    .btn-o { border-color: rgba(255, 255, 255, .7); color: #fff; } .btn-o:hover { background: #fff; color: var(--deep); }
+    .btn-g { background: var(--grad); color: #fff; box-shadow: 0 14px 34px -12px rgba(204, 0, 102, .7); }
 
-<body>
-  <!-- nav -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-white/85 backdrop-blur shadow-sm">
-    <nav class="w-full lg:w-[80%] mx-auto flex flex-row justify-between items-center px-4 py-3">
-      <a href="index.html" class="font-bold text-lg text-gray-800">quangthong3005-ai</a>
-      <ul class="flex flex-row items-center gap-3 lg:gap-6 text-sm lg:text-base text-gray-700">
-        <li class="hidden md:block"><a class="hover:text-teal-500" href="#about-me">About</a></li>
-        <li class="hidden md:block"><a class="hover:text-teal-500" href="#skills">Skills</a></li>
-        <li class="hidden md:block"><a class="hover:text-teal-500" href="#projects">Projects</a></li>
-        <li class="hidden md:block"><a class="hover:text-teal-500" href="#experience">Experience</a></li>
-        <li class="hidden md:block"><a class="hover:text-teal-500" href="#contact">Contact</a></li>
-        <li><a class="border-2 border-teal-400 px-3 py-1 text-teal-500 hover:bg-teal-400 hover:text-white transition-colors" href="musician.html">Musician &rarr;</a></li>
-      </ul>
+    /* nav */
+    header.nav { position: fixed; inset: 0 0 auto 0; z-index: 50; background: rgba(28, 6, 18, .62); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255, 255, 255, .1); }
+    .nav-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 62px; }
+    .logo { font-weight: 800; font-size: 18px; letter-spacing: -.01em; } .logo b { color: var(--pink); }
+    .links { display: flex; align-items: center; gap: 22px; font-size: 15px; color: var(--mute); }
+    .links a:not(.pill) { position: relative; padding: 4px 0; transition: color .2s; } .links a:not(.pill):hover { color: #fff; }
+    .links a:not(.pill)::after { content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--pink); transform: scaleX(0); transform-origin: left; transition: transform .3s; } .links a:not(.pill):hover::after { transform: scaleX(1); }
+    .pill { padding: 8px 18px; border-radius: 999px; border: 2px solid var(--pink); color: #fff; font-weight: 600; font-size: 14px; transition: background-color .2s; } .pill:hover { background: var(--pink); }
+    @media (max-width: 820px) { .links .hide-sm { display: none; } }
+
+    /* hero */
+    .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; padding: 110px 0 70px; overflow: hidden; isolation: isolate; background: linear-gradient(135deg, #FF6699 0%, #e8397f 45%, #CC0066 100%); }
+    .blob { position: absolute; z-index: -1; border-radius: 50%; will-change: transform; }
+    .blob.a { width: 620px; height: 620px; left: -160px; top: -200px; background: radial-gradient(circle, rgba(255, 255, 255, .55), transparent 68%); animation: drift 15s ease-in-out infinite alternate; }
+    .blob.b { width: 720px; height: 720px; right: -240px; bottom: -280px; background: radial-gradient(circle, rgba(60, 0, 40, .75), transparent 68%); animation: drift 18s ease-in-out infinite alternate-reverse; }
+    .blob.c { width: 420px; height: 420px; left: 38%; top: 8%; background: radial-gradient(circle, rgba(255, 153, 187, .75), transparent 68%); animation: drift 12s ease-in-out infinite alternate; }
+    .grid-bg { position: absolute; inset: 0; z-index: -1; opacity: .16; background-image: linear-gradient(rgba(255, 255, 255, .8) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .8) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, #000, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, #000, transparent 75%); }
+    #glow { position: absolute; z-index: -1; left: 0; top: 0; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, .35), transparent 65%); pointer-events: none; will-change: transform; }
+    .float { position: absolute; z-index: -1; font: 700 22px ui-monospace, "SF Mono", Menlo, monospace; color: rgba(255, 255, 255, .45); animation: bob 7s ease-in-out infinite; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; margin-bottom: 18px; }
+    .eyebrow::before { content: ''; width: 34px; height: 2px; background: currentColor; }
+    h1 { font-size: clamp(2rem, 4.2vw, 3.7rem); font-weight: 800; line-height: 1.04; letter-spacing: -.03em; }
+    h1 .who { display: block; white-space: nowrap; background: linear-gradient(100deg, #fff 0%, #ffe0ec 40%, #fff 80%); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shine 6s linear infinite; }
+    .lead { max-width: 480px; margin: 22px 0 34px; font-size: 19px; font-weight: 300; color: #ffe9f1; }
+    .cta { display: flex; flex-wrap: wrap; gap: 14px; }
+    .js .up { opacity: 0; transform: translateY(26px); animation: up .8s cubic-bezier(.22, .8, .24, 1) forwards; }
+    .up:nth-child(2) { animation-delay: .12s } .up:nth-child(3) { animation-delay: .24s } .up:nth-child(4) { animation-delay: .36s }
+    .term { border-radius: 20px; background: rgba(28, 6, 18, .82); box-shadow: 0 40px 90px -30px rgba(40, 0, 20, .9), 0 0 0 1px rgba(255, 255, 255, .14); backdrop-filter: blur(8px); overflow: hidden; transform: perspective(900px) rotateY(-6deg) rotateX(3deg); transition: transform .5s; }
+    .term:hover { transform: perspective(900px) rotateY(0) rotateX(0); }
+    .term-bar { display: flex; align-items: center; gap: 7px; padding: 12px 16px; background: rgba(255, 255, 255, .07); font-size: 12px; color: var(--mute); }
+    .term-bar i { width: 11px; height: 11px; border-radius: 50%; background: #ff5f56; } .term-bar i:nth-child(2) { background: #ffbd2e; } .term-bar i:nth-child(3) { background: #27c93f; } .term-bar span { margin-left: 10px; }
+    .term pre { min-height: 250px; padding: 18px 20px; font: 14px/1.75 ui-monospace, "SF Mono", Menlo, monospace; color: #ffd9e7; white-space: pre-wrap; }
+    @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .term { transform: none; } .float { display: none; } }
+
+    /* sections */
+    section.block { padding: 104px 0; position: relative; }
+    .below { content-visibility: auto; contain-intrinsic-size: auto 700px; }
+    .sec-title { text-align: center; margin-bottom: 52px; }
+    .sec-title small { display: block; font-size: 13px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; color: var(--pink); margin-bottom: 10px; }
+    .sec-title h2 { font-size: clamp(2rem, 4.6vw, 3.2rem); font-weight: 800; letter-spacing: -.02em; }
+    .grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .light .grad { background: linear-gradient(120deg, #e8397f, #CC0066); -webkit-background-clip: text; background-clip: text; }
+    .rv { transition: opacity .8s ease, transform .8s cubic-bezier(.22, .8, .24, 1); }
+    .js .rv { opacity: 0; transform: translateY(32px); } .js .rv.in { opacity: 1; transform: none; }
+    .rv.d1 { transition-delay: .1s } .rv.d2 { transition-delay: .2s } .rv.d3 { transition-delay: .3s }
+
+    /* about (dark wine with pink glow) */
+    .about { background: radial-gradient(ellipse 50% 70% at 100% 0%, rgba(255, 102, 153, .28), transparent 62%), radial-gradient(ellipse 45% 60% at 0% 100%, rgba(204, 0, 102, .35), transparent 62%), var(--wine); }
+    .about-grid { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: center; max-width: 900px; margin: 0 auto; }
+    .avatar { position: relative; width: 240px; height: 240px; margin: 0 auto; border-radius: 50%; display: grid; place-items: center; font-size: 96px; font-weight: 800; color: #fff; background: var(--grad); box-shadow: 0 30px 70px -20px rgba(204, 0, 102, .8); }
+    .avatar::before, .avatar::after { content: ''; position: absolute; inset: -14px; border-radius: 50%; border: 2px solid rgba(255, 102, 153, .55); animation: ring 3.2s ease-out infinite; } .avatar::after { animation-delay: 1.6s; }
+    .about p { font-size: 19px; font-weight: 300; color: #ffe0ec; margin-bottom: 28px; }
+    @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; text-align: center; gap: 36px; } }
+
+    /* skills (light blush) */
+    .light { background: radial-gradient(ellipse 50% 60% at 0% 0%, rgba(255, 102, 153, .2), transparent 62%), linear-gradient(170deg, #fff6f9, #ffe3ee); color: #3a0a22; }
+    .chips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 900px; margin: 0 auto; }
+    .chip { position: relative; overflow: hidden; padding: 22px 12px; border-radius: var(--r); text-align: center; font-weight: 700; color: var(--deep); background: #fff; border: 2px solid rgba(255, 102, 153, .55); transition: transform .3s, color .3s, box-shadow .3s; isolation: isolate; }
+    .chip::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--grad); transform: translateY(101%); transition: transform .35s cubic-bezier(.22, .8, .24, 1); }
+    .chip:hover { transform: translateY(-6px) rotate(-1deg); color: #fff; box-shadow: 0 18px 36px -14px rgba(204, 0, 102, .6); } .chip:hover::before { transform: none; }
+    @media (max-width: 760px) { .chips { grid-template-columns: repeat(2, 1fr); } }
+    .ribbon { margin-top: 56px; overflow: hidden; border-block: 1px solid rgba(204, 0, 102, .2); padding: 16px 0; white-space: nowrap; }
+    .ribbon div { display: inline-flex; gap: 48px; padding-right: 48px; animation: slide 26s linear infinite; font: 700 20px ui-monospace, Menlo, monospace; color: rgba(204, 0, 102, .5); }
+    .ribbon div span::before { content: '/'; margin-right: 48px; color: var(--pink); }
+
+    /* projects (pink to blush) */
+    .proj { background: linear-gradient(180deg, #ffe3ee 0%, #ffc0d6 100%); color: #3a0a22; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .card { --rx: 0deg; --ry: 0deg; --mx: 50%; --my: 50%; position: relative; padding: 30px 26px; border-radius: 22px; background: #fff; box-shadow: 0 22px 50px -26px rgba(204, 0, 102, .55); transform: perspective(800px) rotateX(var(--rx)) rotateY(var(--ry)); transition: transform .25s ease-out, box-shadow .3s; overflow: hidden; }
+    .card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(260px circle at var(--mx) var(--my), rgba(255, 102, 153, .22), transparent 60%); opacity: 0; transition: opacity .3s; } .card:hover::before { opacity: 1; }
+    .card .n { font-weight: 800; font-size: 54px; line-height: 1; font-family: inherit; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 14px; }
+    .card h3 { font-size: 22px; font-weight: 800; margin-bottom: 10px; color: var(--deep); }
+    .card p { color: #6b3a52; margin-bottom: 14px; } .card small { display: block; color: #a0647f; margin-bottom: 18px; }
+    .card a.lk { font-weight: 700; color: var(--deep); border-bottom: 2px solid var(--pink); }
+    .card.soon { background: rgba(255, 255, 255, .55); box-shadow: none; border: 2px dashed rgba(204, 0, 102, .35); } .card.soon h3 { color: #a0647f; } .card.soon .n { opacity: .4; }
+    @media (max-width: 900px) { .cards { grid-template-columns: 1fr; } }
+
+    /* experience (dark) */
+    .exp { background: radial-gradient(ellipse 60% 70% at 50% 0%, rgba(255, 102, 153, .2), transparent 62%), var(--wine2); }
+    .tl { position: relative; max-width: 760px; margin: 0 auto; padding-left: 38px; }
+    .tl::before { content: ''; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 3px; border-radius: 3px; background: linear-gradient(180deg, #FF6699, #CC0066 70%, transparent); }
+    .tl li { position: relative; margin-bottom: 44px; }
+    .tl li::before { content: ''; position: absolute; left: -38px; top: 6px; width: 17px; height: 17px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 0 5px rgba(255, 102, 153, .25); animation: pulse 2.4s infinite; }
+    .tl small { color: var(--pink); font-weight: 700; } .tl h3 { font-size: 24px; font-weight: 800; } .tl p { color: var(--mute); }
+    .tl li.ph h3, .tl li.ph p, .tl li.ph small { opacity: .45; }
+
+    /* contact */
+    .contact { text-align: center; color: #fff; overflow: hidden; isolation: isolate; background: linear-gradient(135deg, #FF6699, #CC0066); }
+    .contact .blob.a { left: -120px; top: -160px; width: 480px; height: 480px; } .contact .blob.b { right: -160px; bottom: -200px; width: 560px; height: 560px; }
+    .contact h2 { font-size: clamp(2rem, 4.6vw, 3.2rem); font-weight: 800; margin-bottom: 14px; }
+    .contact .big { font-size: clamp(1.1rem, 2.2vw, 1.5rem); font-weight: 600; margin-bottom: 8px; } .contact p.s { max-width: 540px; margin: 0 auto 34px; font-weight: 300; font-size: 18px; color: #ffe9f1; }
+    .contact .btn { position: relative; } .contact .btn::after { content: ''; position: absolute; inset: -6px; border-radius: 999px; border: 2px solid rgba(255, 255, 255, .6); animation: ring 2.6s ease-out infinite; }
+    .cform { max-width: 620px; margin: 0 auto; text-align: left; display: grid; gap: 14px; }
+    .cform .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .cform label { display: grid; gap: 6px; font-size: 13px; font-weight: 700; letter-spacing: .06em; color: #fff; }
+    .cform input, .cform textarea { font-weight: 400; font-size: 16px; font-family: inherit; color: #3a0a22; background: rgba(255, 255, 255, .88); border: 2px solid transparent; border-radius: 14px; padding: 12px 14px; width: 100%; transition: border-color .2s, box-shadow .2s; }
+    .cform input:focus, .cform textarea:focus { outline: 0; border-color: #fff; box-shadow: 0 0 0 5px rgba(255, 255, 255, .3); }
+    .cform .btn { justify-self: start; } .cform .btn::after { display: none; } .cform .note { min-height: 22px; font-size: 14px; color: #fff; }
+    .cform .via { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: #ffe9f1; }
+    .cform .via button { padding: 8px 16px; border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, .7); background: transparent; color: #fff; font-weight: 600; font-size: 13px; font-family: inherit; cursor: pointer; transition: background-color .2s, color .2s; }
+    .cform .via button:hover { background: #fff; color: #CC0066; } .cform .via button:disabled, .cform .btn:disabled { opacity: .55; cursor: default; }
+    @media (max-width: 560px) { .cform .row2 { grid-template-columns: 1fr; } .cform .btn { justify-self: stretch; justify-content: center; } }
+    .card .pimg { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; margin-bottom: 14px; }
+    footer { background: #0f030a; padding: 60px 0; text-align: center; color: var(--mute); }
+    footer ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 26px; font-size: 18px; margin-bottom: 26px; } footer li a { display: inline-block; transition: transform .25s, color .25s; } footer li a:hover { transform: translateY(-4px); color: var(--pink); }
+    footer p { opacity: .6; }
+
+    @keyframes drift { from { transform: translate3d(-4%, -3%, 0) scale(1) } to { transform: translate3d(6%, 5%, 0) scale(1.18) } }
+    @keyframes bob { 0%, 100% { transform: translateY(0) rotate(-3deg) } 50% { transform: translateY(-22px) rotate(4deg) } }
+    @keyframes shine { to { background-position: -220% 0 } }
+    @keyframes up { to { opacity: 1; transform: none } }
+    @keyframes ring { from { transform: scale(1); opacity: .8 } to { transform: scale(1.5); opacity: 0 } }
+    @keyframes slide { to { transform: translateX(-100%) } }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 102, 153, .6) } 70%, 100% { box-shadow: 0 0 0 12px rgba(255, 102, 153, 0) } }
+    body.paused .blob, body.paused .float, body.paused h1 .who { animation-play-state: paused; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } .js .rv, .js .up { opacity: 1; transform: none; } }
+  </style>
+</head>
+<body data-page="dev">
+  <div id="bar" aria-hidden="true"></div>
+  <header class="nav">
+    <nav class="wrap nav-in" aria-label="Main">
+      <a href="index.html" class="logo">quangthong<b>3005</b>-ai</a>
+      <div class="links">
+        <a class="hide-sm" href="#about-me">About</a>
+        <a class="hide-sm" href="#skills">Skills</a>
+        <a class="hide-sm" href="#projects">Projects</a>
+        <a class="hide-sm" href="#experience">Experience</a>
+        <a class="hide-sm" href="#contact">Contact</a>
+        <a class="pill" href="audio-plugin.html">Audio</a>
+        <a class="pill" href="musician.html">Musician &rarr;</a>
+      </div>
     </nav>
   </header>
-  <!-- nav ./ -->
 
-  <!-- banner -->
-  <section class="banner-bg min-h-screen w-full flex flex-col justify-center items-center bg-cover bg-center">
-    <div class="w-full lg:w-[80%] p-12 text-gray-800">
-      <h1 class="text-5xl lg:text-6xl font-bold mb-10 grid grid-cols-1 lg:gap-5">
-        <span class="banner-text">Hi, my name is <span class="text-teal-400">quangthong3005-ai</span></span>
-        <span class="text-gray-800 banner-text">I'm the Web Developer.</span>
-      </h1>
-      <a href="#about-me" class="banner-cta uppercase border-2 border-teal-400 p-3 hover:bg-teal-400 hover:text-white transition-colors cursor-pointer">
-        <span class="text-xl pl-8 pr-8 pt-3 pb-3 font-light focus:outline-none focus:ring focus:ring-teal-300">Know more</span>
-      </a>
-    </div>
-  </section>
-  <!-- banner ./ -->
-
-  <!-- about me -->
-  <section id="about-me" class="bg-teal-400 min-h-screen w-full flex flex-col justify-center items-center p-4 lg:p-12 text-white">
-    <div class="w-full lg:w-[60%] mb-5">
-      <h2 class="section-title uppercase text-2xl lg:text-5xl text-center font-bold text-white mb-12">About Me</h2>
-      <div class="section-content grid grid-cols-1 gap-2 lg:grid-cols-3 lg:gap-3">
-        <div class="flex justify-center items-center text-center col-span-1">
-          <div class="w-48 h-48 rounded-full bg-white text-teal-400 flex items-center justify-center text-7xl font-bold" title="My avatar">Q</div>
+  <main>
+    <section class="hero" data-hero aria-label="Introduction">
+      <div class="blob a"></div><div class="blob b"></div><div class="blob c"></div><div class="grid-bg"></div><div id="glow"></div>
+      <span class="float" style="left:6%;top:24%">&lt;/&gt;</span><span class="float" style="left:44%;top:12%;animation-delay:-2s">{ }</span><span class="float" style="right:6%;top:30%;animation-delay:-4s">=&gt;</span><span class="float" style="left:12%;bottom:12%;animation-delay:-3s">git</span><span class="float" style="right:12%;bottom:10%;animation-delay:-5s">npm</span>
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow up">Web Developer</p>
+          <h1 class="up">Hi, my name is <span class="who">quangthong3005-ai</span> I'm the Web Developer.</h1>
+          <p class="lead up" data-text="devLead">I build websites and tools for the web, and I like making them feel alive.</p>
+          <div class="cta up"><a class="btn btn-w" href="#about-me">Know more</a><a class="btn btn-o" href="#projects">See projects</a></div>
         </div>
-        <div class="col-span-1 lg:col-span-2 flex justify-center items-center">
-          <div class="p-0 text-center lg:p-8 lg:text-start">
-            <p class="pb-3 text-lg font-light mb-5">
-              I love programming and building things for the web. I'm learning web development with HTML,
-              Tailwind CSS, Git and GitHub Actions, and my goal is to become a skilled software engineer.
-            </p>
-            <a href="https://github.com/quangthong3005-ai" target="_blank"
-              class="uppercase border-2 border-white p-3 text-white hover:bg-white hover:text-teal-400 transition-colors cursor-pointer">
-              <span class="text-xl pl-8 pr-8 pt-3 pb-3 font-normal focus:outline-none focus:ring focus:ring-teal-300">View My GitHub</span>
-            </a>
+        <div class="up"><div class="term" aria-hidden="true">
+          <div class="term-bar"><i></i><i></i><i></i><span>~/portfolio</span></div>
+<pre data-type='["$ git checkout -b feature/portfolio","Switched to a new branch","$ npm run build","vite v8 building for production...","✓ 12 modules transformed","✓ built in 1.2s","$ git push origin feature/portfolio","✓ Deployed with GitHub Actions"]'>$ git checkout -b feature/portfolio</pre>
+        </div></div>
+      </div>
+    </section>
+
+    <section id="about-me" class="block about below">
+      <div class="wrap">
+        <div class="sec-title rv"><small>Hello</small><h2>About <span class="grad">Me</span></h2></div>
+        <div class="about-grid">
+          <div class="rv"><div class="avatar" title="My avatar">Q</div></div>
+          <div class="rv d1">
+            <p data-text="devAbout">I love programming and building things for the web. I'm learning web development with HTML, Tailwind CSS, Git and GitHub Actions, and my goal is to become a skilled software engineer.</p>
+            <a class="btn btn-g" href="https://github.com/quangthong3005-ai" target="_blank" rel="noopener">View My GitHub</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- about me ./ -->
+    </section>
 
-  <!-- skills -->
-  <section id="skills" class="bg-white min-h-[500px] w-full flex flex-col justify-center items-center p-6 lg:p-12 text-gray-800">
-    <div class="w-full lg:w-[60%]">
-      <h2 class="section-title uppercase text-2xl lg:text-5xl text-center font-bold mb-12">Skills</h2>
-      <ul class="section-content grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-        <li class="border-2 border-teal-400 text-teal-500 font-semibold py-4 hover:bg-teal-400 hover:text-white transition-colors">HTML</li>
-        <li class="border-2 border-teal-400 text-teal-500 font-semibold py-4 hover:bg-teal-400 hover:text-white transition-colors">CSS</li>
-        <li class="border-2 border-teal-400 text-teal-500 font-semibold py-4 hover:bg-teal-400 hover:text-white transition-colors">Tailwind CSS</li>
-        <li class="border-2 border-teal-400 text-teal-500 font-semibold py-4 hover:bg-teal-400 hover:text-white transition-colors">JavaScript</li>
-        <li class="border-2 border-teal-400 text-teal-500 font-semibold py-4 hover:bg-teal-400 hover:text-white transition-colors">Git &amp; GitHub</li>
-        <li class="border-2 border-teal-400 text-teal-500 font-semibold py-4 hover:bg-teal-400 hover:text-white transition-colors">GitHub Actions</li>
-        <li class="border-2 border-teal-400 text-teal-500 font-semibold py-4 hover:bg-teal-400 hover:text-white transition-colors">Vite</li>
-        <li class="border-2 border-teal-400 text-teal-500 font-semibold py-4 hover:bg-teal-400 hover:text-white transition-colors">npm</li>
-      </ul>
-    </div>
-  </section>
-  <!-- skills ./ -->
-
-  <!-- projects -->
-  <section id="projects" class="bg-gray-100 min-h-[500px] w-full flex flex-col justify-center items-center p-6 lg:p-12 text-gray-800">
-    <div class="w-full lg:w-[70%]">
-      <h2 class="section-title uppercase text-2xl lg:text-5xl text-center font-bold mb-12">Projects</h2>
-      <div class="section-content grid grid-cols-1 md:grid-cols-3 gap-6">
-        <article class="bg-white p-6 shadow hover:-translate-y-2 transition-transform">
-          <h3 class="text-xl font-bold text-teal-500 mb-2">Portfolio Website</h3>
-          <p class="mb-4 text-gray-600">This site: a two-path portfolio built with Tailwind CSS and Vite, deployed with GitHub Actions.</p>
-          <p class="text-sm text-gray-500 mb-4">Tech: HTML, Tailwind CSS, Vite</p>
-          <a class="text-teal-500 underline" href="https://github.com/quangthong3005-ai/quangthong3005-ai.github.io" target="_blank">View on GitHub</a>
-        </article>
-        <article class="bg-white p-6 shadow hover:-translate-y-2 transition-transform">
-          <h3 class="text-xl font-bold text-teal-500 mb-2">GitHub Flow Practice</h3>
-          <p class="mb-4 text-gray-600">Practice with issues, feature branches, pull requests, rebase and branch protection.</p>
-          <p class="text-sm text-gray-500 mb-4">Tech: Git, GitHub</p>
-          <a class="text-teal-500 underline" href="https://github.com/quangthong3005-ai/quangthong3005-ai.github.io/pulls?q=is%3Apr" target="_blank">View pull requests</a>
-        </article>
-        <article class="bg-white p-6 shadow hover:-translate-y-2 transition-transform">
-          <h3 class="text-xl font-bold text-gray-400 mb-2">Next Project</h3>
-          <p class="mb-4 text-gray-500">Placeholder. Replace this card with your own project title and description.</p>
-          <p class="text-sm text-gray-400 mb-4">Tech: to be added</p>
-          <span class="text-gray-400">Coming soon</span>
-        </article>
+    <section id="skills" class="block light below">
+      <div class="wrap">
+        <div class="sec-title rv"><small>Toolbox</small><h2><span class="grad">Skills</span></h2></div>
+        <ul class="chips rv d1" id="devChips">
+          <li class="chip">HTML</li><li class="chip">CSS</li><li class="chip">Tailwind CSS</li><li class="chip">JavaScript</li>
+          <li class="chip">Git &amp; GitHub</li><li class="chip">GitHub Actions</li><li class="chip">Vite</li><li class="chip">npm</li>
+        </ul>
+        <div class="ribbon" id="devRibbon" aria-hidden="true"><div><span>HTML</span><span>CSS</span><span>Tailwind</span><span>JavaScript</span><span>Git</span><span>GitHub Actions</span><span>Vite</span><span>npm</span></div><div><span>HTML</span><span>CSS</span><span>Tailwind</span><span>JavaScript</span><span>Git</span><span>GitHub Actions</span><span>Vite</span><span>npm</span></div></div>
       </div>
-    </div>
-  </section>
-  <!-- projects ./ -->
+    </section>
 
-  <!-- experience -->
-  <section id="experience" class="bg-white min-h-[500px] w-full flex flex-col justify-center items-center p-6 lg:p-12 text-gray-800">
-    <div class="w-full lg:w-[60%]">
-      <h2 class="section-title uppercase text-2xl lg:text-5xl text-center font-bold mb-12">Experience &amp; Education</h2>
-      <ol class="section-content border-l-4 border-teal-400 pl-6 space-y-8">
-        <li>
-          <p class="text-sm text-teal-500 font-semibold">2026 &ndash; Present</p>
-          <h3 class="text-xl font-bold">Web Development Course</h3>
-          <p class="text-gray-600">Learning Git, GitHub, HTML, Tailwind CSS and deployment with GitHub Actions.</p>
-        </li>
-        <li>
-          <p class="text-sm text-gray-400 font-semibold">Year &ndash; Year</p>
-          <h3 class="text-xl font-bold text-gray-400">Your Role or Degree (placeholder)</h3>
-          <p class="text-gray-400">Company or school name. Replace this entry with your own experience.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-  <!-- experience ./ -->
+    <section id="projects" class="block proj below">
+      <div class="wrap">
+        <div class="sec-title rv"><small>Work</small><h2><span class="grad">Projects</span></h2></div>
+        <div class="cards" id="devCards">
+          <article class="card tilt rv"><div class="n">01</div><h3>Portfolio Website</h3><p>This site: a multi-path portfolio built with Vite, deployed with GitHub Actions.</p><small>Tech: HTML, CSS, JavaScript, Vite</small><a class="lk" href="https://github.com/quangthong3005-ai/quangthong3005-ai.github.io" target="_blank" rel="noopener">View on GitHub</a></article>
+          <article class="card tilt rv d1"><div class="n">02</div><h3>GitHub Flow Practice</h3><p>Practice with issues, feature branches, pull requests, rebase and branch protection.</p><small>Tech: Git, GitHub</small><a class="lk" href="https://github.com/quangthong3005-ai/quangthong3005-ai.github.io/pulls?q=is%3Apr" target="_blank" rel="noopener">View pull requests</a></article>
+          <article class="card tilt soon rv d2"><div class="n">03</div><h3>Next Project</h3><p>Placeholder. Replace this card with your own project title and description.</p><small>Tech: to be added</small><span>Coming soon</span></article>
+        </div>
+      </div>
+    </section>
 
-  <!-- contact -->
-  <section id="contact" class="bg-teal-400 min-h-[500px] w-full flex flex-col justify-center items-center p-6 lg:p-12 text-white">
-    <div class="w-full lg:w-[60%] mb-5">
-      <h2 class="section-title uppercase text-2xl lg:text-5xl text-center font-bold mb-6">Contact</h2>
-      <p class="section-content flex flex-col justify-center items-center pt-5 pb-5 text-center">
-        <span class="text-2xl mb-3">I LOOK FORWARD TO WORKING WITH YOU</span>
-        <span>I'm so happy that my skills might bring values to you. Let's connect for work</span>
-      </p>
-    </div>
-    <a href="mailto:quangthong3005@gmail.com?subject=Hi, I want to connect with you for work&body=Please describe your work or projects requirements"
-      class="border-2 border-white pl-8 pr-8 pt-3 pb-3 bg-white text-teal-500 hover:bg-teal-400 hover:text-white transition-colors cursor-pointer">
-      <span class="text-xl uppercase font-light focus:outline-none focus:ring focus:ring-teal-300">Send An Email Now</span>
-    </a>
-  </section>
-  <!-- contact ./ -->
+    <section id="experience" class="block exp below">
+      <div class="wrap">
+        <div class="sec-title rv"><small>Journey</small><h2>Experience <span class="grad">&amp; Education</span></h2></div>
+        <ol class="tl" id="devTl">
+          <li class="rv"><small>2026 &ndash; Present</small><h3>Web Development Course</h3><p>Learning Git, GitHub, HTML, Tailwind CSS and deployment with GitHub Actions.</p></li>
+          <li class="ph rv d1"><small>Year &ndash; Year</small><h3>Your Role or Degree (placeholder)</h3><p>Company or school name. Replace this entry with your own experience.</p></li>
+        </ol>
+      </div>
+    </section>
 
-  <!-- footer -->
-  <footer class="bg-neutral-900 min-h-[300px] pt-12 pb-12 flex flex-row justify-center items-center">
-    <div class="w-[60%] flex flex-col justify-center items-center">
-      <ul class="flex flex-row text-gray-300 text-lg">
-        <li class="pl-4 pr-4 cursor-pointer hover:-translate-y-2 hover:text-teal-400">
-          <a href="https://github.com/quangthong3005-ai" target="_blank">GitHub</a>
-        </li>
-        <li class="pl-4 pr-4 cursor-pointer hover:-translate-y-2 hover:text-teal-400">
-          <a href="mailto:quangthong3005@gmail.com">Email</a>
-        </li>
-        <li class="pl-4 pr-4 cursor-pointer hover:-translate-y-2 hover:text-amber-300">
-          <a href="musician.html">Musician</a>
-        </li>
-      </ul>
-      <hr class="w-1/2 border-gray-500 mt-10" />
-      <p class="text-lg text-gray-500 mt-5">&copy;2026 - quangthong3005-ai</p>
+    <section id="contact" class="block contact below">
+      <div class="blob a"></div><div class="blob b"></div>
+      <div class="wrap">
+        <h2 class="rv">Contact</h2>
+        <p class="big rv d1" data-text="devContactBig">I LOOK FORWARD TO WORKING WITH YOU</p>
+        <p class="s rv d1" data-text="devContact">I'm so happy that my skills might bring values to you. Let's connect for work.</p>
+        <form class="cform rv d2" data-contact data-site="developer" novalidate>
+          <div class="row2">
+            <label>Name<input name="name" required maxlength="80" autocomplete="name"></label>
+            <label>Email or phone<input name="contact" required maxlength="120" autocomplete="email"></label>
+          </div>
+          <label>Message<textarea name="message" rows="4" required maxlength="2000" placeholder="Tell me about your project"></textarea></label>
+          <button class="btn btn-w" type="submit">Send message</button>
+          <div class="via"><span>or send it with</span>
+            <button type="button" data-via="email">Email</button>
+            <button type="button" data-via="gmail">Gmail</button>
+            <button type="button" data-via="zalo">Zalo</button>
+            <button type="button" data-via="whatsapp">WhatsApp</button>
+          </div>
+          <p class="note" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <ul><li><a href="index.html">Home</a></li><li><a href="https://github.com/quangthong3005-ai" target="_blank" rel="noopener">GitHub</a></li><li><a href="mailto:quangthong3005@gmail.com">Email</a></li><li><a href="audio-plugin.html">Audio Plugins</a></li><li><a href="musician.html">Musician</a></li></ul>
+      <p>&copy;2026 - quangthong3005-ai</p>
     </div>
   </footer>
-  <!-- footer ./ -->
-
-  <script type="module" src="/src/scripts/application.js"></script>
+  <script type="module" src="./src/scripts/fx.js"></script>
 </body>
-
 </html>

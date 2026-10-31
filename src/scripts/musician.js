@@ -24,4 +24,4 @@ if ('requestIdleCallback' in window) requestIdleCallback(startSchedule, { timeou
 else setTimeout(startSchedule, 600)
 
 const cf = document.getElementById('qtContact')
-if (cf) cf.addEventListener('submit', (e) => { e.preventDefault(); import('./qt-contact.js').then((m) => m.sendMessage(cf, document.getElementById('qtNote'))) })
+if (cf) import('./qt-contact.js').then((m) => m.wire(cf))
