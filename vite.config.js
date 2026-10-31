@@ -10,6 +10,7 @@ export default defineConfig({
         developer: fileURLToPath(new URL('./developer.html', import.meta.url)),
         audioPlugin: fileURLToPath(new URL('./audio-plugin.html', import.meta.url)),
         musician: fileURLToPath(new URL('./musician.html', import.meta.url)),
+        admin: fileURLToPath(new URL('./admin.html', import.meta.url)),
       },
     },
   },

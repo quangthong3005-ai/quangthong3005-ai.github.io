@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Portfolio admin | Quang Thong</title>
+  <link rel="icon" href="/logo-musician.svg" type="image/svg+xml">
+  <style>
+    :root { --ink: #0a1c20; --ink2: #0f2a2f; --card: #12292f; --line: rgba(255,255,255,.12); --text: #e7f0f1; --mute: #9fb4b7; --teal: #2dd4bf; --teal-d: #0f766e; --pink: #f5b8cf; --ombre: linear-gradient(120deg, #2dd4bf, #c9dede 60%, #f5b8cf); --r: 14px; }
+    * { box-sizing: border-box; margin: 0; }
+    body { font: 400 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif; background: radial-gradient(ellipse 60% 40% at 0% 0%, rgba(45,212,191,.14), transparent 60%), radial-gradient(ellipse 50% 40% at 100% 0%, rgba(245,184,207,.1), transparent 60%), var(--ink); color: var(--text); min-height: 100vh; }
+    a { color: var(--teal); }
+    header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 20px; border-bottom: 1px solid var(--line); background: rgba(10,28,32,.8); position: sticky; top: 0; z-index: 5; backdrop-filter: blur(10px); }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; } .brand img { width: 30px; height: 30px; border-radius: 8px; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 24px 16px 80px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 9px 18px; border-radius: 999px; border: 1px solid transparent; font: 600 14px inherit; cursor: pointer; color: var(--ink); background: var(--ombre); }
+    .btn:disabled { opacity: .5; cursor: default; }
+    .btn.ghost { background: transparent; color: var(--text); border-color: var(--line); } .btn.ghost:hover { border-color: var(--pink); color: var(--pink); }
+    .btn.danger { background: transparent; color: #fda4af; border-color: rgba(253,164,175,.4); }
+    .btn.sm { padding: 6px 13px; font-size: 13px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; }
+    h2 { font-size: 22px; margin-bottom: 4px; } .sub { color: var(--mute); font-size: 14px; margin-bottom: 18px; }
+    .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+    .tab { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--mute); font: 600 14px inherit; cursor: pointer; }
+    .tab.active { background: var(--ombre); color: var(--ink); border-color: transparent; }
+    input, select, textarea { font: inherit; color: var(--text); background: rgba(255,255,255,.06); border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; width: 100%; }
+    input:focus, select:focus, textarea:focus { outline: 0; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(45,212,191,.18); }
+    select option { color: #111; }
+    label { display: grid; gap: 4px; font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--mute); }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; } .full { grid-column: 1 / -1; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .msg { color: var(--teal); font-size: 14px; min-height: 20px; margin: 8px 0; }
+    [hidden] { display: none !important; }
+    .login { max-width: 420px; margin: 12vh auto; text-align: center; }
+    /* calendar */
+    .cal-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .cal-title { font-size: 22px; font-weight: 700; min-width: 190px; }
+    .live { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+    .live i { width: 8px; height: 8px; border-radius: 50%; background: #5e7478; } .live.on { color: #86efac; } .live.on i { background: #4ade80; }
+    .cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+    .dow { text-align: center; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); padding: 4px 0; }
+    .cell { min-height: 92px; padding: 6px; border-radius: 10px; background: rgba(255,255,255,.04); border: 1px solid transparent; cursor: pointer; display: flex; flex-direction: column; gap: 3px; overflow: hidden; }
+    .cell:hover { border-color: var(--teal); } .cell.out { opacity: .4; } .cell.today { border-color: var(--pink); background: rgba(245,184,207,.1); } .cell.sel { border-color: var(--teal); }
+    .num { display: flex; justify-content: space-between; font-size: 12px; color: var(--mute); } .num span:last-child { opacity: 0; } .cell:hover .num span:last-child { opacity: 1; color: var(--teal); }
+    .chip { font-size: 11px; line-height: 1.25; padding: 3px 6px; border-radius: 6px; text-align: left; border: 0; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: linear-gradient(135deg, #14b8a6, #0f766e); color: #fff; }
+    .chip.collab { background: linear-gradient(135deg, #f5b8cf, #d98aa9); color: #0a1c20; } .chip.solo { background: #9fb4b7; color: #0a1c20; } .chip.session { background: #b9ece4; color: #0a1c20; }
+    .chip.both { outline: 1px dashed rgba(255,255,255,.6); outline-offset: -2px; }
+    .more { font-size: 11px; color: var(--mute); }
+    .form { margin-top: 18px; padding: 18px; border-radius: var(--r); background: rgba(255,255,255,.04); border: 1px solid var(--line); }
+    .up { display: flex; justify-content: space-between; gap: 12px; width: 100%; text-align: left; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--line); background: transparent; color: var(--text); cursor: pointer; margin-bottom: 6px; font: inherit; }
+    .up:hover { border-color: var(--teal); } .up b { color: var(--pink); white-space: nowrap; } .up span { color: var(--mute); text-align: right; }
+    @media (max-width: 720px) { .cell { min-height: 64px; } .chip { font-size: 0; padding: 3px; } .grid { grid-template-columns: 1fr; } .cal-title { min-width: 0; font-size: 18px; } }
+    /* media */
+    .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+    .tile { background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 12px; padding: 8px; display: grid; gap: 8px; }
+    .tile img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; }
+    .texts { display: grid; gap: 16px; }
+    /* data */
+    .cust { border: 1px solid var(--line); border-radius: 12px; margin-bottom: 8px; background: rgba(255,255,255,.03); }
+    .cust summary { list-style: none; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 12px 16px; cursor: pointer; }
+    .cust summary::-webkit-details-marker { display: none; }
+    .cust .name { font-weight: 700; } .cust small { color: var(--mute); display: block; }
+    .badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; background: rgba(45,212,191,.18); color: var(--teal); }
+    .badge.band { background: rgba(245,184,207,.18); color: var(--pink); }
+    .cbody { padding: 0 16px 16px; display: grid; gap: 12px; }
+    .item { border-left: 3px solid var(--teal); padding: 6px 12px; background: rgba(255,255,255,.04); border-radius: 0 8px 8px 0; white-space: pre-wrap; }
+    .item time { display: block; font-size: 12px; color: var(--mute); }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-bottom: 16px; }
+    .stat { padding: 12px 14px; border-radius: 12px; background: rgba(255,255,255,.04); border: 1px solid var(--line); } .stat b { display: block; font-size: 24px; background: var(--ombre); -webkit-background-clip: text; background-clip: text; color: transparent; } .stat span { font-size: 12px; color: var(--mute); }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="musician.html" style="color:inherit;text-decoration:none"><img src="/logo-musician.svg" alt="">Portfolio admin</a>
+    <div class="row"><a class="btn ghost sm" href="musician.html">View site</a><button id="signOut" class="btn ghost sm" hidden>Sign out</button></div>
+  </header>
+
+  <div id="loginBox" class="login card">
+    <h2>Sign in</h2>
+    <p class="sub">Only the owner can use this page.</p>
+    <button id="signIn" class="btn" type="button">Sign in with Google</button>
+    <p id="loginMsg" class="msg" aria-live="polite"></p>
+  </div>
+
+  <main id="app" class="wrap" hidden>
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="schedule">Schedule</button>
+      <button class="tab" data-tab="photos">Photos</button>
+      <button class="tab" data-tab="videos">Videos</button>
+      <button class="tab" data-tab="texts">Texts</button>
+      <button class="tab" data-tab="data">Data</button>
+    </div>
+
+    <section id="tab-schedule" class="card">
+      <h2>Schedule</h2>
+      <p class="sub">Click a day to add a show. Click a show to edit or delete it. Changes appear on the portfolio right away.</p>
+      <div class="cal-head">
+        <button id="calPrev" class="btn ghost sm" aria-label="Previous month">&larr;</button>
+        <button id="calToday" class="btn ghost sm">Today</button>
+        <button id="calNext" class="btn ghost sm" aria-label="Next month">&rarr;</button>
+        <span id="calTitle" class="cal-title"></span>
+        <span id="calLive" class="live"><i></i>Live</span>
+      </div>
+      <div id="calGrid" class="cal"></div>
+      <form id="calForm" class="form" hidden>
+        <div class="grid">
+          <label class="full">Title<input id="shTitle" required maxlength="100" placeholder="e.g. Wedding at Riverside, Jazz night"></label>
+          <label>Band / collab with<input id="shWith" maxlength="80" list="withList" placeholder="e.g. Dynamites Band, Band B, a singer"><datalist id="withList"><option value="Dynamites Band"></datalist></label>
+          <label>Type<select id="shKind"><option value="band">Band show</option><option value="collab">Collab</option><option value="solo">Solo</option><option value="session">Session</option></select></label>
+          <label>Date<input id="shDate" type="date" required></label>
+          <label>City<input id="shCity" maxlength="60"></label>
+          <label>Start<input id="shStart" type="time"></label>
+          <label>End<input id="shEnd" type="time"></label>
+          <label class="full">Venue<input id="shVenue" maxlength="120"></label>
+          <label class="full">Note (shown on the website)<input id="shNote" maxlength="140" placeholder="e.g. Free entry"></label>
+          <label class="full">Link (tickets or event page, optional)<input id="shLink" type="url" maxlength="300" placeholder="https://"></label>
+          <label class="full">Show on<select id="shScope"><option value="qt">Portfolio only</option><option value="both">Portfolio and the band site</option></select></label>
+        </div>
+        <div class="row" style="margin-top:14px">
+          <button id="shSave" class="btn" type="submit">Add show</button>
+          <button id="shDelete" class="btn danger" type="button" hidden>Delete</button>
+          <button id="shCancel" class="btn ghost" type="button">Cancel</button>
+        </div>
+      </form>
+      <p id="shMsg" class="msg" aria-live="polite"></p>
+      <h2 style="margin-top:18px;font-size:18px">Next 60 days</h2>
+      <div id="calUpcoming" style="margin-top:10px"></div>
+    </section>
+
+    <section id="tab-photos" class="card" hidden>
+      <h2>Gallery photos</h2>
+      <p class="sub">Pick one or more photos. They are resized automatically and appear in the portfolio Gallery.</p>
+      <form id="photoForm" class="row" style="margin-bottom:14px">
+        <input id="photoFile" type="file" accept="image/*" multiple required style="width:auto">
+        <input id="photoCaption" maxlength="80" placeholder="Caption (optional)" style="width:240px">
+        <button id="photoBtn" class="btn" type="submit">Upload</button>
+      </form>
+      <p id="photoMsg" class="msg" aria-live="polite"></p>
+      <div id="photoList" class="tiles"></div>
+    </section>
+
+    <section id="tab-videos" class="card" hidden>
+      <h2>Videos</h2>
+      <p class="sub">Paste a YouTube link. It appears under the main video in the Music section.</p>
+      <form id="videoForm" class="row" style="margin-bottom:14px">
+        <input id="videoUrl" required placeholder="https://www.youtube.com/watch?v=..." style="flex:1;min-width:240px">
+        <input id="videoTitle" maxlength="100" placeholder="Title (optional)" style="width:240px">
+        <button class="btn" type="submit">Add video</button>
+      </form>
+      <p id="videoMsg" class="msg" aria-live="polite"></p>
+      <div id="videoList" class="tiles"></div>
+    </section>
+
+    <section id="tab-texts" class="card" hidden>
+      <h2>Website texts</h2>
+      <p class="sub">Edit the main sentences of the portfolio. "Reset" brings back the original text.</p>
+      <p id="textMsg" class="msg" aria-live="polite"></p>
+      <div id="textList" class="texts"></div>
+    </section>
+
+    <section id="tab-data" class="card" hidden>
+      <h2>Data</h2>
+      <p class="sub">Everything in one place: messages from the contact forms, grouped by person, plus a full backup you can download.</p>
+      <div id="stats" class="stats"></div>
+      <div class="row" style="margin-bottom:14px">
+        <input id="dSearch" placeholder="Search name, contact or message" style="flex:1;min-width:200px">
+        <select id="dSite" style="width:auto"><option value="">All sites</option><option value="portfolio">Portfolio</option><option value="band">Band</option></select>
+        <select id="dStatus" style="width:auto"><option value="">All statuses</option></select>
+      </div>
+      <div class="row" style="margin-bottom:14px">
+        <button id="dCsv" class="btn ghost sm" type="button">Download customers (CSV)</button>
+        <button id="dJson" class="btn ghost sm" type="button">Download everything (JSON)</button>
+      </div>
+      <p id="dMsg" class="msg" aria-live="polite"></p>
+      <div id="dList"></div>
+    </section>
+  </main>
+  <script type="module" src="./src/scripts/admin.js"></script>
+</body>
+</html>
