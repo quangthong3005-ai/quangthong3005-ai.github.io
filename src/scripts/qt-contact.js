@@ -4,11 +4,11 @@ import { firebaseConfig } from './firebase-config.js'
 const EMAIL = 'quangthong3005@gmail.com'
 const PHONE = '0775525482'
 const INTL = '84' + PHONE.slice(1)
-const SUBJECT = { portfolio: 'Hi Quang Thong, I want to connect about music', developer: 'Hi, I want to connect with you for work', audio: 'Hi, I want to talk about an audio plugin project' }
+const SUBJECT = { portfolio: 'Hi Lucas, I want to connect about music', developer: 'Hi, I want to connect with you for work', audio: 'Hi, I want to talk about an audio plugin project' }
 
 const cut = (v, n) => String(v || '').trim().slice(0, n)
 function read(form) { const d = new FormData(form); return { name: cut(d.get('name'), 80), contact: cut(d.get('contact'), 120), message: cut(d.get('message'), 2000) } }
-const text = (v) => 'Hello Quang Thong,\n\n' + v.message + '\n\nName: ' + v.name + '\nContact: ' + v.contact
+const text = (v) => 'Hello Lucas Nguyen,\n\n' + v.message + '\n\nName: ' + v.name + '\nContact: ' + v.contact
 
 async function save(site, v, via) {
   try {
