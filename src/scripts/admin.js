@@ -203,11 +203,11 @@ async function loadTexts(docId, fields, listId, msgId) {
 
 /* ---------------- list managers (projects, skills, experience, plugins) ---------------- */
 const MANAGERS = [
-  { id: 'devprojects', title: 'Projects', sub: 'Projects shown on the Developer page. Use the arrows to change the order.', defaults: DEV_PROJECTS,
+  { id: 'devprojects', title: 'Projects', sub: 'Projects shown on the Web Developer page. Use the arrows to change the order.', defaults: DEV_PROJECTS,
     fields: [{ k: 'title', l: 'Title', max: 100, req: 1, full: 1 }, { k: 'desc', l: 'Description', ta: 1, max: 400, full: 1 }, { k: 'tech', l: 'Tech used', max: 120 }, { k: 'linkLabel', l: 'Link text', max: 40 }, { k: 'link', l: 'Link (https://...)', type: 'url', max: 300, full: 1 }, { k: 'image', l: 'Image (optional)', img: 1, full: 1 }],
     head: (d) => d.title, meta: (d) => d.tech || d.desc },
-  { id: 'devskills', title: 'Skills', sub: 'Skills shown on the Developer page.', defaults: DEV_SKILLS, fields: [{ k: 'name', l: 'Skill', max: 40, req: 1, full: 1 }], head: (d) => d.name, meta: () => '' },
-  { id: 'devexp', title: 'Experience & education', sub: 'Timeline entries on the Developer page.', defaults: DEV_EXP,
+  { id: 'devskills', title: 'Skills', sub: 'Skills shown on the Web Developer page.', defaults: DEV_SKILLS, fields: [{ k: 'name', l: 'Skill', max: 40, req: 1, full: 1 }], head: (d) => d.name, meta: () => '' },
+  { id: 'devexp', title: 'Experience & education', sub: 'Timeline entries on the Web Developer page.', defaults: DEV_EXP,
     fields: [{ k: 'period', l: 'Period (e.g. 2026 - Present)', max: 40 }, { k: 'title', l: 'Role or degree', max: 100, req: 1 }, { k: 'text', l: 'Description', ta: 1, max: 400, full: 1 }], head: (d) => d.title, meta: (d) => d.period },
   { id: 'plugins', title: 'Plugin products', sub: 'Add, edit and remove plugins. A picture is optional: without one the card shows a dial.', defaults: PLUGINS,
     fields: [{ k: 'name', l: 'Plugin name', max: 60, req: 1 }, { k: 'tag', l: 'Type (Dynamics, Filter...)', max: 30, list: ['Dynamics', 'Filter', 'Harmonic', 'Modulation', 'Reverb', 'Delay', 'Utility'] }, { k: 'desc', l: 'Description', ta: 1, max: 500, full: 1 }, { k: 'linkLabel', l: 'Link text', max: 40 }, { k: 'link', l: 'Link (demo, download, video...)', type: 'url', max: 300, full: 1 }, { k: 'image', l: 'Picture / screenshot', img: 1, full: 1 }],
@@ -318,7 +318,7 @@ document.querySelectorAll('.site').forEach((b) => b.addEventListener('click', ()
 /* ---------------- data ---------------- */
 const STATUS = { new: 'New', contacted: 'Contacted', quoted: 'Quoted', booked: 'Booked', done: 'Done', lost: 'Not going ahead' }
 let requests = [], notes = {}, allShows = [], firstSnap = true
-const SITE_LABEL = { portfolio: 'Musician', developer: 'Developer', audio: 'Audio', band: 'Band' }
+const SITE_LABEL = { portfolio: 'Musician', developer: 'Web Developer', audio: 'Audio Plugin Developer', band: 'Band' }
 const siteOf = (r) => r.site || 'band'
 const SEEN_KEY = 'adminSeenAt'
 const seenAt = () => { try { return Number(localStorage.getItem(SEEN_KEY)) || 0 } catch { return 0 } }
